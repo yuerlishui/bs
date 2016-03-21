@@ -48,9 +48,7 @@ public class SingleChooseActivity extends BaseActivity {
         x.view().inject(this);
         initData();
         initView();
-        //jkhnkhij
-        //sakljdfkasjfkasjf
-        //sdfsd
+     
     }
 
     private void initRadioGroup() {
