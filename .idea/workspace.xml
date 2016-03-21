@@ -57,8 +57,8 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6164383">
-              <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+            <state vertical-scroll-proportion="-0.43369177">
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -68,12 +68,12 @@
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding>
-                <marker date="1458570254236" expanded="true" signature="154707:154749" placeholder="..." />
-                <marker date="1458570254236" expanded="true" signature="154707:154767" placeholder="..." />
-                <marker date="1458570254236" expanded="true" signature="154707:154780" placeholder="..." />
-                <marker date="1458570254236" expanded="true" signature="154707:154795" placeholder="..." />
+                <marker date="1458570545126" expanded="true" signature="154458:154500" placeholder="..." />
+                <marker date="1458570545126" expanded="true" signature="154458:154518" placeholder="..." />
+                <marker date="1458570545126" expanded="true" signature="154458:154531" placeholder="..." />
+                <marker date="1458570545126" expanded="true" signature="154458:154546" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -2051,15 +2051,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1378" height="744" extended-state="1" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32879046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -2189,10 +2189,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1458570254236" expanded="true" signature="154707:154749" placeholder="..." />
-            <marker date="1458570254236" expanded="true" signature="154707:154767" placeholder="..." />
-            <marker date="1458570254236" expanded="true" signature="154707:154780" placeholder="..." />
-            <marker date="1458570254236" expanded="true" signature="154707:154795" placeholder="..." />
+            <marker date="1458570545126" expanded="true" signature="154458:154500" placeholder="..." />
+            <marker date="1458570545126" expanded="true" signature="154458:154518" placeholder="..." />
+            <marker date="1458570545126" expanded="true" signature="154458:154531" placeholder="..." />
+            <marker date="1458570545126" expanded="true" signature="154458:154546" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -2277,20 +2277,20 @@
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding>
-            <marker date="1458570254236" expanded="true" signature="154707:154749" placeholder="..." />
-            <marker date="1458570254236" expanded="true" signature="154707:154767" placeholder="..." />
-            <marker date="1458570254236" expanded="true" signature="154707:154780" placeholder="..." />
-            <marker date="1458570254236" expanded="true" signature="154707:154795" placeholder="..." />
+            <marker date="1458570545126" expanded="true" signature="154458:154500" placeholder="..." />
+            <marker date="1458570545126" expanded="true" signature="154458:154518" placeholder="..." />
+            <marker date="1458570545126" expanded="true" signature="154458:154531" placeholder="..." />
+            <marker date="1458570545126" expanded="true" signature="154458:154546" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6164383">
-          <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+        <state vertical-scroll-proportion="-0.43369177">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
       </provider>
