@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7c3698f-ae7c-4b06-98a5-4a3c9dd56ead" name="Default" comment="">
@@ -57,8 +57,8 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.43369177">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.8924731">
+              <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -70,10 +70,10 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding>
-                <marker date="1458570545126" expanded="true" signature="154458:154500" placeholder="..." />
-                <marker date="1458570545126" expanded="true" signature="154458:154518" placeholder="..." />
-                <marker date="1458570545126" expanded="true" signature="154458:154531" placeholder="..." />
-                <marker date="1458570545126" expanded="true" signature="154458:154546" placeholder="..." />
+                <marker date="1458570642439" expanded="true" signature="154578:154620" placeholder="..." />
+                <marker date="1458570642439" expanded="true" signature="154578:154638" placeholder="..." />
+                <marker date="1458570642439" expanded="true" signature="154578:154651" placeholder="..." />
+                <marker date="1458570642439" expanded="true" signature="154578:154666" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -2189,10 +2189,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1458570545126" expanded="true" signature="154458:154500" placeholder="..." />
-            <marker date="1458570545126" expanded="true" signature="154458:154518" placeholder="..." />
-            <marker date="1458570545126" expanded="true" signature="154458:154531" placeholder="..." />
-            <marker date="1458570545126" expanded="true" signature="154458:154546" placeholder="..." />
+            <marker date="1458570642439" expanded="true" signature="154578:154620" placeholder="..." />
+            <marker date="1458570642439" expanded="true" signature="154578:154638" placeholder="..." />
+            <marker date="1458570642439" expanded="true" signature="154578:154651" placeholder="..." />
+            <marker date="1458570642439" expanded="true" signature="154578:154666" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -2279,18 +2279,18 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding>
-            <marker date="1458570545126" expanded="true" signature="154458:154500" placeholder="..." />
-            <marker date="1458570545126" expanded="true" signature="154458:154518" placeholder="..." />
-            <marker date="1458570545126" expanded="true" signature="154458:154531" placeholder="..." />
-            <marker date="1458570545126" expanded="true" signature="154458:154546" placeholder="..." />
+            <marker date="1458570642439" expanded="true" signature="154578:154620" placeholder="..." />
+            <marker date="1458570642439" expanded="true" signature="154578:154638" placeholder="..." />
+            <marker date="1458570642439" expanded="true" signature="154578:154651" placeholder="..." />
+            <marker date="1458570642439" expanded="true" signature="154578:154666" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.43369177">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.8924731">
+          <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
           <folding />
         </state>
       </provider>
