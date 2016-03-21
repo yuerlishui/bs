@@ -48,6 +48,7 @@ public class SingleChooseActivity extends BaseActivity {
         x.view().inject(this);
         initData();
         initView();
+        //jhgjhghj
     }
 
     private void initRadioGroup() {
