@@ -92,6 +92,8 @@ public class TranslateFragment extends DialogFragment {
                             JSONObject object = jsonArray.getJSONObject(0);
                             String src = object.getString("src");
                             String dst = object.getString("dst");
+                            Log.d("TAG", "src:" + src);
+                            Log.d("TAG", "dst:" + dst);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

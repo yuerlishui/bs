@@ -108,3 +108,8 @@ app/app.iml
 
 .idea/misc.xml
 
+
+.idea/gradle.xml
+
+gradle/wrapper/gradle-wrapper.properties
+
