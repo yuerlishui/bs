@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Ykl</string>
+    <string name="tranlation">词霸小编：#投稿人陈正姗。今天的每日一句来自一位学习食品的妹子的投稿~首先要感谢这位妹子，也谢谢一直支持词霸的各位。谢谢大家。最近因为系统的问题一直有很多图文错误影响了大家的正常阅读，小编在这里给大家道歉了。希望大家可以继续支持词霸~PS：收到礼物的小伙伴还回执了照片给小编，小编已经收到了~希望你们能喜欢这点小小的心意~以后小编还会给大家抽奖的~</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

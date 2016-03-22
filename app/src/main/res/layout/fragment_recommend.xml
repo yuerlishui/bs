@@ -5,6 +5,7 @@
     tools:context=".fragment.RecommendFragment">
 
     <RelativeLayout
+        android:id="@+id/top_bar"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@android:color/holo_blue_light">
@@ -18,4 +19,81 @@
             android:textColor="@android:color/white"
             android:textSize="16sp" />
     </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_below="@+id/top_bar"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:alpha=".8"
+        android:background="@drawable/bg_date">
+
+        <TextView
+            android:id="@+id/month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="May"
+            android:textColor="#fff"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/month"
+            android:layout_centerHorizontal="true"
+            android:text="22"
+            android:textColor="#fff"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/relativeLayout"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/relativeLayout"
+        android:layout_toRightOf="@+id/relativeLayout"
+        android:lineSpacingExtra="3dp"
+        android:maxLines="3"
+        android:text="I am a slow walker,but I never walk backwards."
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/content"
+        android:layout_alignStart="@+id/content"
+        android:layout_below="@+id/content"
+        android:layout_marginTop="5dp"
+        android:maxLines="3"
+        android:text="我走得很慢，但是我从来不会后退。"
+        android:textSize="18sp" />
+
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/picture"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/note" />
+
+    <TextView
+        android:id="@+id/translation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/picture"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:lineSpacingExtra="3dp"
+        android:text="@string/tranlation" />
 </RelativeLayout>
