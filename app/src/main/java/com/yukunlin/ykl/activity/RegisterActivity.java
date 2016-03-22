@@ -1,5 +1,6 @@
 package com.yukunlin.ykl.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -61,6 +62,9 @@ public class RegisterActivity extends BaseActivity {
     }
     @Event(value = R.id.register)
     private void onRegister(View view) {
+        final ProgressDialog dialog = new ProgressDialog(this);
+        dialog.setMessage("请稍后...");
+        dialog.show();
         User user = MyApplication.getUser();
         user.setUsername(accountEditText.getText().toString().trim());
         user.setPassword(passwordEditText.getText().toString().trim());
@@ -68,11 +72,13 @@ public class RegisterActivity extends BaseActivity {
             @Override
             public void onSuccess() {
                 Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
             }
 
             @Override
             public void onFailure(int i, String s) {
                 Toast.makeText(RegisterActivity.this, s, Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
             }
         });
     }
