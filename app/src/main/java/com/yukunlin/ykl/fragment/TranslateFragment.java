@@ -66,18 +66,18 @@ public class TranslateFragment extends DialogFragment {
 
     private void loadData() {
         String appid = "20160317000015823";
-        String q = "apple";
+        String q = "hello";
         String salt = Long.toString(new java.util.Date().getTime());//随机数，官方提供的是获取时间
         String key = "ndM_MLjJQrc2FfNV401n";
         String md5Code = MD5_baidu_trans.GetMD5Code(appid + q + salt + key);
         String trim = contentEditText.getText().toString().trim();
 
         try {
-            encode = URLEncoder.encode(q, "utf-8");
+            encode = URLEncoder.encode(trim, "utf-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        String url = "q=" + q + "&from=en&to=zh&appid=" + appid + "&salt=" + salt + "&sign=" + md5Code;
+        String url = "q=" + trim + "&from=en&to=zh&appid=" + appid + "&salt=" + salt + "&sign=" + md5Code;
         String u = "http://api.fanyi.baidu.com/api/trans/vip/translate" + "?" + url;
         StringRequest req = new StringRequest(
                 GET,
@@ -88,16 +88,17 @@ public class TranslateFragment extends DialogFragment {
                         Log.d("TAG", "result:" + response);
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            JSONArray jsonArray = jsonObject.getJSONArray("trans_result");
-                            JSONObject object = jsonArray.getJSONObject(0);
-                            String src = object.getString("src");
-                            String dst = object.getString("dst");
-                            Log.d("TAG", "src:" + src);
-                            Log.d("TAG", "dst:" + dst);
+                            JSONArray trans_result = jsonObject.getJSONArray("trans_result");
+                            for (int i = 0; i < trans_result.length(); i++) {
+                                JSONObject object = trans_result.getJSONObject(i);
+                                String src = object.getString("src");
+                                String dst = object.getString("dst");
+                                resultTextView.setText(dst);
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
-                        }
 
+                        }
                     }
                 },
                 new com.android.volley.Response.ErrorListener() {
