@@ -1,5 +1,6 @@
 package com.yukunlin.ykl.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -42,10 +43,9 @@ public class LoginActivity extends BaseActivity {
 
     @Event(value = R.id.backImageView)
     private void onBack(View view) {
-        startActivity(new Intent(this,WelcomeActivity.class));
+        startActivity(new Intent(this, WelcomeActivity.class));
         finish();
     }
-
 
 
     private void initBtn() {
@@ -72,9 +72,14 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void doLogin() {
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final ProgressDialog dialog = new ProgressDialog(LoginActivity.this);
+                dialog.setMessage("请稍后...");
+                dialog.show();
+
                 if (MyApplication.getUser() == null) {
                     user = new User();
                 } else {
@@ -86,6 +91,7 @@ public class LoginActivity extends BaseActivity {
                     @Override
                     public void onSuccess() {
                         Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
                         finish();
@@ -94,6 +100,7 @@ public class LoginActivity extends BaseActivity {
                     @Override
                     public void onFailure(int code, String msg) {
                         Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
                     }
                 });
             }

@@ -31,6 +31,7 @@
         android:orientation="horizontal">
 
         <Spinner
+            android:id="@+id/spinner"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -61,12 +62,14 @@
         android:lines="5" />
 
     <TextView
+        android:padding="10dp"
         android:id="@+id/result"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@+id/content"
         android:gravity="center_vertical"
-        android:text="翻译结果" />
+        android:text="翻译结果"
+        android:textSize="20sp" />
 
     <View
         android:id="@+id/line"
