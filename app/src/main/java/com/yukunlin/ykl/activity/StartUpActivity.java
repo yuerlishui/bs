@@ -14,7 +14,7 @@ import cn.bmob.v3.BmobUser;
 
 public class StartUpActivity extends BaseActivity {
     @ViewInject(R.id.startImageView)
-    ImageView startImageView;
+    private ImageView startImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -37,16 +37,16 @@ import cn.bmob.v3.listener.GetListener;
  */
 public class RecommendFragment extends DialogFragment {
     @ViewInject(R.id.note)
-    TextView note;
+    private TextView note;
 
     @ViewInject(R.id.content)
-    TextView content;
+    private TextView content;
 
     @ViewInject(R.id.picture)
-    NetworkImageView picture;
+    private NetworkImageView picture;
 
     @ViewInject(R.id.translation)
-    TextView translation;
+    private TextView translation;
 
     private String url = "http://open.iciba.com/dsapi";
     private RequestQueue mQueue;

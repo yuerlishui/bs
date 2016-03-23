@@ -32,13 +32,13 @@ public class SingleChooseActivity extends BaseActivity {
 
 
     @ViewInject(R.id.radioGroup)
-    RadioGroup radioGroup;
+    private RadioGroup radioGroup;
 
     @ViewInject(R.id.question)
-    TextView tv_question;
+    private TextView tv_question;
 
     @ViewInject(R.id.explaination)
-    TextView tv_explaination;
+    private TextView tv_explaination;
 
 
     @Override

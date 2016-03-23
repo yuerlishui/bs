@@ -57,7 +57,7 @@ public class TranslateFragment extends DialogFragment {
     private Spinner spinner;
 
     @ViewInject(R.id.historyListView)
-    ListView listView;
+    private ListView listView;
 
     private RequestQueue mQueue;
     private String encode;

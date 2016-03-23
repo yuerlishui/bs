@@ -23,13 +23,14 @@ import cn.bmob.v3.listener.SaveListener;
 
 public class LoginActivity extends BaseActivity {
     @ViewInject(R.id.accountEditText)
-    EditText accountEditText;
+    private EditText accountEditText;
 
     @ViewInject(R.id.passwordEditText)
-    EditText passwordEditText;
+    private EditText passwordEditText;
 
     @ViewInject(R.id.login)
-    Button login;
+    private Button login;
+
     private User user;
 
     @Override

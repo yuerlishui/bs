@@ -22,13 +22,13 @@ import cn.bmob.v3.listener.SaveListener;
 
 public class RegisterActivity extends BaseActivity {
     @ViewInject(R.id.accountEditText)
-    EditText accountEditText;
+    private EditText accountEditText;
 
     @ViewInject(R.id.passwordEditText)
-    EditText passwordEditText;
+    private EditText passwordEditText;
 
     @ViewInject(R.id.register)
-    Button register;
+    private Button register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
