@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -17,18 +18,27 @@ import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.yukunlin.ykl.MyApplication;
 import com.yukunlin.ykl.R;
+import com.yukunlin.ykl.adapter.TranHistoryAdapter;
+import com.yukunlin.ykl.database.TranHistory;
 import com.yukunlin.ykl.network.MD5_baidu_trans;
+import com.yukunlin.ykl.user.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.xutils.DbManager;
+import org.xutils.ex.DbException;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.List;
+
+import cn.bmob.v3.BmobUser;
 
 import static com.android.volley.Request.Method.GET;
 
@@ -38,19 +48,23 @@ import static com.android.volley.Request.Method.GET;
 public class TranslateFragment extends DialogFragment {
 
     @ViewInject(R.id.resultTextView)
-    TextView resultTextView;
+    private TextView resultTextView;
 
     @ViewInject(R.id.content)
-    EditText contentEditText;
+    private EditText contentEditText;
 
     @ViewInject(R.id.spinner)
-    Spinner spinner;
+    private Spinner spinner;
+
+    @ViewInject(R.id.historyListView)
+    ListView listView;
 
     private RequestQueue mQueue;
     private String encode;
     private String s;
     private String origin;
     private String dest;
+    private DbManager dbManager;
 
 
     public TranslateFragment() {
@@ -69,7 +83,32 @@ public class TranslateFragment extends DialogFragment {
         x.view().inject(this, root);
         mQueue = Volley.newRequestQueue(getContext());
         initSpinner();
+        initDB();
         return root;
+    }
+
+    private void initDB() {
+        Log.d("history", BmobUser.getCurrentUser(getContext()).getObjectId());
+        DbManager.DaoConfig config = new DbManager.DaoConfig()
+                .setDbName(BmobUser.getCurrentUser(getContext()).getObjectId())
+                .setDbVersion(1)
+                .setDbUpgradeListener(new DbManager.DbUpgradeListener() {
+                    @Override
+                    public void onUpgrade(DbManager db, int oldVersion, int newVersion) {
+
+                    }
+                });
+        dbManager = x.getDb(config);
+        try {
+            List<TranHistory> histories = dbManager.selector(TranHistory.class).findAll();
+            if (histories != null) {
+                listView.setAdapter(new TranHistoryAdapter(getContext(), histories));
+            }
+
+        } catch (DbException e) {
+            e.printStackTrace();
+            Log.d("history", e.getMessage());
+        }
     }
 
     private void initSpinner() {
@@ -125,6 +164,14 @@ public class TranslateFragment extends DialogFragment {
                                 String dst = object.getString("dst");
                                 resultTextView.setText(dst);
                                 resultTextView.setVisibility(View.VISIBLE);
+                                TranHistory history = new TranHistory();
+                                history.setContent(src);
+                                history.setNote(dst);
+                                try {
+                                    dbManager.save(history);
+                                } catch (DbException e) {
+                                    e.printStackTrace();
+                                }
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
