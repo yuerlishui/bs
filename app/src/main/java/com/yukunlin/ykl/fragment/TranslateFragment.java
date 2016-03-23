@@ -88,7 +88,6 @@ public class TranslateFragment extends DialogFragment {
     }
 
     private void initDB() {
-        Log.d("history", BmobUser.getCurrentUser(getContext()).getObjectId());
         DbManager.DaoConfig config = new DbManager.DaoConfig()
                 .setDbName(BmobUser.getCurrentUser(getContext()).getObjectId())
                 .setDbVersion(1)
@@ -107,7 +106,6 @@ public class TranslateFragment extends DialogFragment {
 
         } catch (DbException e) {
             e.printStackTrace();
-            Log.d("history", e.getMessage());
         }
     }
 
@@ -154,7 +152,6 @@ public class TranslateFragment extends DialogFragment {
                 new com.android.volley.Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.d("TAG", "result:" + response);
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             JSONArray trans_result = jsonObject.getJSONArray("trans_result");
