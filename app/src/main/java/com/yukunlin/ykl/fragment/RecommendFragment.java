@@ -21,15 +21,21 @@ import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.yukunlin.ykl.R;
+import com.yukunlin.ykl.bean.OneWord;
 import com.yukunlin.ykl.data.MainPage;
 import com.yukunlin.ykl.utils.MemoryCache;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.GetListener;
 
 /**
@@ -48,9 +54,20 @@ public class RecommendFragment extends DialogFragment {
     @ViewInject(R.id.translation)
     private TextView translation;
 
+    @ViewInject(R.id.word)
+    private TextView word;
+
+    @ViewInject(R.id.nWord)
+    private TextView nWord;
+
+    @ViewInject(R.id.adjWord)
+    private TextView adjWork;
+
     private String url = "http://open.iciba.com/dsapi";
     private RequestQueue mQueue;
     private ImageLoader loader;
+    private List<OneWord> wordList;
+    private int index = 0;
 
     public RecommendFragment() {
         // Required empty public constructor
@@ -74,18 +91,39 @@ public class RecommendFragment extends DialogFragment {
     }
 
     private void queryData() {
-        BmobQuery<MainPage> query = new BmobQuery<MainPage>();
-        query.getObject(getActivity(), "882aa41ca4", new GetListener<MainPage>() {
+        wordList = new ArrayList<>();
+        BmobQuery<OneWord> query = new BmobQuery<OneWord>();
+        query.findObjects(getContext(), new FindListener<OneWord>() {
             @Override
-            public void onSuccess(MainPage mainPage) {
-                Log.d("MainPage", mainPage.toString());
+            public void onSuccess(List<OneWord> list) {
+                wordList.addAll(list);
+                initWord();
             }
 
             @Override
-            public void onFailure(int i, String s) {
+            public void onError(int i, String s) {
                 Toast.makeText(getActivity(), "获取数据失败   " + s, Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void initWord() {
+
+    }
+
+    @Event(value = R.id.nextWord)
+    private void nextWordClick(View view) {
+
+        if (wordList != null && wordList.size() != 0) {
+            word.setText(wordList.get(index).getWord());
+            adjWork.setText(wordList.get(index).getAdj());
+            nWord.setText(wordList.get(index).getN());
+        }
+        index++;
+        if (index == 5) {
+            index = 0;
+        }
+
     }
 
     private void initData() {
@@ -114,6 +152,7 @@ public class RecommendFragment extends DialogFragment {
             }
         });
         mQueue.add(request);
+
     }
 
 }
