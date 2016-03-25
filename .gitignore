@@ -88,6 +88,8 @@ app/app.iml
 
 
 
+/ptr-lib/ptr-lib.iml
+/app/app.iml
 
 
 .idea/encodings.xml
@@ -113,9 +115,9 @@ app/app.iml
 
 .idea/gradle.xml
 
-app/app.iml
+
 /.idea/libraries
-app/app.iml
-*.iml
 
 *.iml
+
+
