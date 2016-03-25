@@ -60,4 +60,8 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+    <style name="me_block">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@drawable/bg_white_item</item>
+    </style>
 </resources>

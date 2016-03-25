@@ -1,0 +1,163 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.yukunlin.ykl.fragment.CompleteFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/tob_bar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/titleHeight"
+                android:background="#ffffff">
+
+                <ImageView
+                    android:id="@+id/backImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="5dp"
+                    android:src="@drawable/backarrow" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="完善资料"
+                    android:textSize="@dimen/textSize_superLarge" />
+
+                <TextView
+                    android:id="@+id/done_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:text="完成"
+                    android:textColor="@color/main_hint_color"
+                    android:textSize="@dimen/textSize_large" />
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_alignParentBottom="true"
+                    android:background="#e1e1e1" />
+
+            </RelativeLayout>
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/avatar"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_below="@+id/tob_bar"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="70dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/default_avatar_male"
+                app:riv_border_color="#ffffff"
+                app:riv_border_width="5dip"
+                app:riv_corner_radius="100dp" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_alignBottom="@id/avatar"
+                android:layout_alignRight="@id/avatar"
+                android:layout_marginBottom="3dp"
+                android:layout_marginRight="3dp"
+                android:src="@drawable/camera" />　
+
+            <LinearLayout
+                android:id="@+id/pass_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/avatar"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/sexLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/headImageView"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="30dp">
+
+                    <ImageView
+                        android:id="@+id/boyImageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/modify_boy" />
+
+                    <ImageView
+                        android:id="@+id/girlImageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@+id/boyImageView"
+                        android:src="@drawable/modify_girl" />
+
+                </RelativeLayout>
+
+                <View
+                    android:id="@+id/line1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="60dp"
+                    android:background="#e1e1e1" />
+
+                <RelativeLayout
+                    style="@style/me_block"
+                    android:layout_height="45dp">
+
+                    <EditText
+                        android:id="@+id/user_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:gravity="center"
+                        android:hint="起个闪亮的昵称"
+                        android:maxLength="15"
+                        android:paddingRight="15dp"
+                        android:singleLine="true"
+                        android:textSize="@dimen/textSize_large" />
+                </RelativeLayout>
+
+                <View
+                    android:id="@+id/line2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_below="@+id/hintTextView"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:background="#e1e1e1" />
+
+
+
+
+
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

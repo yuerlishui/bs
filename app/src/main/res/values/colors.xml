@@ -75,4 +75,9 @@
     <color name="warmGrey">#999999</color>
     <color name="warningRed">#bd3232</color>
 
+    <!--注册登陆模块-->
+    <color name="text_color">#50719b</color>
+    <color name="tomato_color">#e84417</color>
+    <color name="text_color_brown">#666666</color>
+
 </resources>

@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.yukunlin.ykl.MyApplication;
 import com.yukunlin.ykl.R;
+import com.yukunlin.ykl.fragment.CompleteFragment;
 import com.yukunlin.ykl.user.User;
 
 import org.xutils.view.annotation.Event;
@@ -60,6 +61,7 @@ public class RegisterActivity extends BaseActivity {
         accountEditText.addTextChangedListener(textWatcher);
         passwordEditText.addTextChangedListener(textWatcher);
     }
+
     @Event(value = R.id.register)
     private void onRegister(View view) {
         final ProgressDialog dialog = new ProgressDialog(this);
@@ -68,19 +70,22 @@ public class RegisterActivity extends BaseActivity {
         User user = MyApplication.getUser();
         user.setUsername(accountEditText.getText().toString().trim());
         user.setPassword(passwordEditText.getText().toString().trim());
-        user.signUp(RegisterActivity.this, new SaveListener() {
-            @Override
-            public void onSuccess() {
-                Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
-                dialog.dismiss();
-            }
 
-            @Override
-            public void onFailure(int i, String s) {
-                Toast.makeText(RegisterActivity.this, s, Toast.LENGTH_SHORT).show();
-                dialog.dismiss();
-            }
-        });
+        CompleteFragment completeFragment = new CompleteFragment();
+        completeFragment.show(getSupportFragmentManager(), "dialogFragment");
+//        user.signUp(RegisterActivity.this, new SaveListener() {
+//            @Override
+//            public void onSuccess() {
+//                Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
+//                dialog.dismiss();
+//            }
+//
+//            @Override
+//            public void onFailure(int i, String s) {
+//                Toast.makeText(RegisterActivity.this, s, Toast.LENGTH_SHORT).show();
+//                dialog.dismiss();
+//            }
+//        });
     }
 
     @Event(value = R.id.backImageView)
