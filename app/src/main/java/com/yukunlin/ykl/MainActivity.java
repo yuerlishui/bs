@@ -73,7 +73,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public void onBackPressed() {
         if (myselfFragment.isVisible() || RecFragment.isVisible() || testFragment.isVisible() || tranFragment.isVisible()) {
             if ((System.currentTimeMillis() - exitTime) > 2000) {
-                Toast.makeText(this, "在按一次退出程序", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
                 exitTime = System.currentTimeMillis();
             } else {
                 finish();

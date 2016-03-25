@@ -20,6 +20,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.yukunlin.ykl.CumstomView.RefreshView;
 import com.yukunlin.ykl.R;
 import com.yukunlin.ykl.bean.OneWord;
 import com.yukunlin.ykl.data.MainPage;
@@ -37,6 +38,10 @@ import java.util.List;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.GetListener;
+import in.srain.cube.views.ptr.PtrClassicFrameLayout;
+import in.srain.cube.views.ptr.PtrDefaultHandler;
+import in.srain.cube.views.ptr.PtrFrameLayout;
+import in.srain.cube.views.ptr.PtrHandler;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -63,6 +68,9 @@ public class RecommendFragment extends DialogFragment {
     @ViewInject(R.id.adjWord)
     private TextView adjWork;
 
+    @ViewInject(R.id.ptrLayout)
+    PtrClassicFrameLayout ptrLayout;
+
     private String url = "http://open.iciba.com/dsapi";
     private RequestQueue mQueue;
     private ImageLoader loader;
@@ -87,7 +95,26 @@ public class RecommendFragment extends DialogFragment {
         loader = new ImageLoader(mQueue, new MemoryCache());
         initData();
         queryData();
+        initPtr();
         return root;
+    }
+
+    private void initPtr() {
+        ptrLayout.setLastUpdateTimeRelateObject(this);
+        ptrLayout.setPtrHandler(new PtrHandler() {
+            @Override
+            public void onRefreshBegin(PtrFrameLayout frame) {
+                initData();
+            }
+
+            @Override
+            public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
+                return PtrDefaultHandler.checkContentCanBePulledDown(frame, content, header);
+            }
+        });
+        RefreshView refreshView = new RefreshView(getContext());
+        ptrLayout.setHeaderView(refreshView);
+        ptrLayout.addPtrUIHandler(refreshView);
     }
 
     private void queryData() {
@@ -130,6 +157,7 @@ public class RecommendFragment extends DialogFragment {
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                ptrLayout.refreshComplete();
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     String notes = jsonObject.getString("note");
@@ -149,6 +177,7 @@ public class RecommendFragment extends DialogFragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getActivity(), "获取数据失败", Toast.LENGTH_SHORT).show();
+                ptrLayout.refreshComplete();
             }
         });
         mQueue.add(request);
