@@ -2,27 +2,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context="com.yukunlin.ykl.fragment.MyselfFragment">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="240dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/bg_profle" />
+    tools:context="com.yukunlin.ykl.fragment.MyselfFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_height="240dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:scaleType="centerCrop"
+            android:background="#f4f3ef" />
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/avatar"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_centerInParent="true"
+            android:adjustViewBounds="true"
+            android:src="@drawable/default_avatar_male"
+            android:scaleType="centerCrop"
+            app:riv_border_color="#f6f6f6"
+            app:riv_border_width="1px"
+            app:riv_corner_radius="100dp" />
+        <ImageView
+            android:id="@+id/sexImageView"
+            android:layout_width="19dp"
+            android:layout_height="19dp"
+            android:layout_alignBottom="@+id/avatar"
+            android:layout_alignRight="@+id/avatar"
+            android:layout_marginBottom="1dp"
+            android:layout_marginRight="1dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/personal_boys" />
+        <TextView
+            android:id="@+id/nameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/avatar"
+            android:layout_gravity="center_vertical"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="18dp"
+            android:singleLine="true"
+            android:text="名字"
+            android:textColor="#111"
+            android:textSize="16dp" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/setting"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="10dp"
         android:background="@drawable/bg_me">
 
         <TextView
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"
-            android:text="生词本"
+            android:text="设置"
             android:textSize="16sp" />
 
         <ImageView
@@ -38,6 +81,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="-1dp"
         android:background="@drawable/bg_me">
 
         <TextView

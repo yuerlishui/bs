@@ -4,11 +4,9 @@ package com.yukunlin.ykl.fragment;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +21,6 @@ import com.android.volley.toolbox.Volley;
 import com.yukunlin.ykl.CumstomView.RefreshView;
 import com.yukunlin.ykl.R;
 import com.yukunlin.ykl.bean.OneWord;
-import com.yukunlin.ykl.data.MainPage;
 import com.yukunlin.ykl.utils.MemoryCache;
 
 import org.json.JSONException;
@@ -37,7 +34,6 @@ import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
-import cn.bmob.v3.listener.GetListener;
 import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;

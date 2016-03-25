@@ -4,6 +4,13 @@
     <string name="minuteBefore">分钟前</string>
     <string name="hourBefore">小时前</string>
     <string name="dayBefore">天前</string>
+    <string name="title_modifyprofile">修改个人资料</string>
+    <string name="title_modifypassword">设置新密码</string>
+    <string name="cancel">取消</string>
+    <string name="save">保存</string>
+    <string name="ok">确定</string>
+    <string name="send">发送</string>
+    <string name="back">返回</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string-array name="kind">

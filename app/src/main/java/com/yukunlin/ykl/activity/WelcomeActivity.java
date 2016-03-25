@@ -20,14 +20,15 @@ public class WelcomeActivity extends BaseActivity {
 
     @Event(value = R.id.login)
     private void doLogin(View view) {
-        startActivity(new Intent(this,LoginActivity.class));
+        startActivity(new Intent(this, LoginActivity.class));
+        finish();
 
 
     }
 
     @Event(value = R.id.register)
     private void doRegister(View view) {
-        startActivity(new Intent(this,RegisterActivity.class));
-
+        startActivity(new Intent(this, RegisterActivity.class));
+        finish();
     }
 }

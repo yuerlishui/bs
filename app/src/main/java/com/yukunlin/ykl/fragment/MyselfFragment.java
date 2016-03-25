@@ -2,14 +2,17 @@ package com.yukunlin.ykl.fragment;
 
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.yukunlin.ykl.CumstomView.BeautifulDialog;
 import com.yukunlin.ykl.R;
+import com.yukunlin.ykl.activity.WelcomeActivity;
 
 import org.xutils.view.annotation.Event;
 import org.xutils.x;
@@ -41,7 +44,7 @@ public class MyselfFragment extends DialogFragment {
     @Event(value = R.id.exit)
     private void onExitClick(View view) {
         final BeautifulDialog dialog = new BeautifulDialog(getActivity());
-        dialog.setTitleTxt("确认退出吗");
+        dialog.setTitleTxt("确认退出吗?");
         dialog.setCancelTxt("取消");
         dialog.setConfirTxt("确认");
         dialog.show();
@@ -51,6 +54,7 @@ public class MyselfFragment extends DialogFragment {
                 BmobUser.logOut(getContext());   //清除缓存用户对象
                 BmobUser currentUser = BmobUser.getCurrentUser(getContext()); // 现在的currentUser是null了
                 getActivity().finish();
+                startActivity(new Intent(getActivity(), WelcomeActivity.class));
             }
 
             @Override
@@ -59,5 +63,17 @@ public class MyselfFragment extends DialogFragment {
             }
         });
 
+    }
+    @Event(value = R.id.setting)
+    private void settingClick(View view){
+        ProfileFragment modifyProfileFragment = new ProfileFragment();
+        modifyProfileFragment.setOnFinishListener(new ProfileFragment.OnFinishListener() {
+            @Override
+            public void onFinish() {
+               // updatePerson();
+            }
+        });
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        modifyProfileFragment.show(fm, "dialogFragment");
     }
 }

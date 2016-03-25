@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootlay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F2F5"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/titleHeight"
+                android:layout_gravity="center_horizontal"
+                android:background="#FFFFFF">
+
+                <ImageButton
+                    android:id="@+id/backImageButton"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:background="#00000000"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/icon_back" />
+
+                <TextView
+                    android:id="@+id/titleTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/title_modifyprofile"
+                    android:textSize="@dimen/textSize_large" />
+
+                <TextView
+                    android:id="@+id/submitView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:text="@string/save"
+                    android:textColor="#e84417"
+                    android:textSize="@dimen/textSize_large" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/headLayout"
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:layout_below="@+id/relativeLayout">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/headImageView"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="45dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/default_avatar_male"
+                    app:riv_corner_radius="112dp" />
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_alignBottom="@id/headImageView"
+                    android:layout_alignRight="@id/headImageView"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginRight="1dp"
+                    android:src="@drawable/camera" />　
+
+                <RelativeLayout
+                    android:id="@+id/sexLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/headImageView"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="25dp">
+
+                    <ImageView
+                        android:id="@+id/boyImageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/modify_boy" />
+
+                    <ImageView
+                        android:id="@+id/girlImageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@+id/boyImageView"
+                        android:src="@drawable/modify_girl" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/nameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/titleHeight"
+                android:layout_below="@+id/headLayout"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="昵称"
+                    android:textSize="@dimen/textSize_large" />
+
+                <EditText
+                    android:text="yukl"
+                    android:id="@+id/nameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    android:background="@null"
+                    android:maxLength="15"
+                    android:singleLine="true"
+                    android:textSize="@dimen/textSize_large" />
+            </RelativeLayout>
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@+id/cityLayout"
+                android:layout_marginBottom="10dp"
+                android:background="#e1e1e1" />
+
+            <RelativeLayout
+                android:id="@+id/localLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/titleHeight"
+                android:layout_below="@+id/cityLayout"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/bg_white_item"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="地区"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/textSize_large" />
+
+                <RelativeLayout
+                    android:id="@+id/location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true">
+
+                    <TextView
+                        android:id="@+id/localTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="15dp"
+                        android:text="广州"
+                        android:textSize="@dimen/textSize_large" />
+
+                    <ImageView
+                        style="@style/me_right_arrow"
+                        android:layout_marginRight="0dp" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/phoneLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/titleHeight"
+                android:layout_below="@+id/nameLayout"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="手机"
+                    android:textSize="@dimen/textSize_large" />
+
+                <TextView
+                    android:id="@+id/phoneTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    android:text=""
+                    android:textColor="#cccccc"
+                    android:textSize="@dimen/textSize_large" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@+id/phoneLayout"
+                android:layout_marginBottom="10dp"
+                android:background="#e1e1e1" />
+
+            <RelativeLayout
+                android:id="@+id/cityLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/titleHeight"
+                android:layout_below="@+id/phoneLayout"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/bg_white_item"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="地区"
+                    android:textSize="@dimen/textSize_large" />
+
+                <TextView
+                    android:id="@+id/cityTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:text=""
+                    android:textSize="@dimen/textSize_large" />
+
+                <ImageView
+                    style="@style/me_right_arrow"
+                    android:layout_marginRight="0dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/modifyPasswordLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/titleHeight"
+                android:layout_below="@+id/localLayout"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/bg_white_item"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="修改密码"
+                    android:textSize="@dimen/textSize_large" />
+
+                <RelativeLayout
+                    android:id="@+id/modifyPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true">
+
+                    <ImageView
+                        style="@style/me_right_arrow"
+                        android:layout_marginRight="0dp" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@+id/localLayout"
+                android:layout_marginBottom="10dp"
+                android:background="#e1e1e1" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@+id/modifyPasswordLayout"
+                android:layout_marginBottom="10dp"
+                android:background="#e1e1e1" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@+id/nameLayout"
+                android:layout_marginBottom="10dp"
+                android:background="#e1e1e1" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@+id/phoneLayout"
+                android:layout_marginBottom="10dp"
+                android:background="#e1e1e1" />
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>

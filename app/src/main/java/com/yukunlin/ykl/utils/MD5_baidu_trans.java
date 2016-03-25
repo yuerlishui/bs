@@ -1,4 +1,4 @@
-package com.yukunlin.ykl.network;
+package com.yukunlin.ykl.utils;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;

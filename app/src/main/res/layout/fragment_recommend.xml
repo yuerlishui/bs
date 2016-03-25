@@ -33,9 +33,9 @@
         app:ptr_resistance="1.5">
 
         <ScrollView
-            android:layout_below="@+id/ptrLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_below="@+id/ptrLayout">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -46,8 +46,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp">
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
 
                     <TextView
                         android:id="@+id/word"
@@ -58,7 +58,7 @@
                         android:textSize="30sp" />
 
                     <TextView
-                        android:id="@+id/nWord"
+                        android:id="@+id/adjWord"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/word"
@@ -67,10 +67,10 @@
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/adjWord"
+                        android:id="@+id/nWord"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/nWord"
+                        android:layout_below="@+id/adjWord"
                         android:text="adj.  正午的"
                         android:textSize="16sp" />
 
@@ -118,6 +118,7 @@
                 </RelativeLayout>
 
                 <TextView
+                    android:textColor="#111111"
                     android:id="@+id/content"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -126,12 +127,13 @@
                     android:layout_marginTop="5dp"
                     android:layout_toEndOf="@+id/relativeLayout"
                     android:layout_toRightOf="@+id/relativeLayout"
-                    android:lineSpacingExtra="3dp"
+                    android:lineSpacingExtra="2dp"
                     android:maxLines="3"
                     android:text="I am a slow walker,but I never walk backwards."
                     android:textSize="18sp" />
 
                 <TextView
+                    android:layout_marginRight="15dp"
                     android:id="@+id/note"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -141,7 +143,7 @@
                     android:layout_marginTop="5dp"
                     android:maxLines="3"
                     android:text="我走得很慢，但是我从来不会后退。"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <com.android.volley.toolbox.NetworkImageView
                     android:id="@+id/picture"
@@ -153,6 +155,7 @@
                     android:layout_marginTop="10dp" />
 
                 <TextView
+
                     android:id="@+id/translation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -166,4 +169,5 @@
         </ScrollView>
 
     </in.srain.cube.views.ptr.PtrClassicFrameLayout>
+
 </RelativeLayout>
