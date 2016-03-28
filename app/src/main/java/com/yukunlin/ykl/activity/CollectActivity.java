@@ -1,27 +1,19 @@
-package com.yukunlin.ykl.fragment;
+package com.yukunlin.ykl.activity;
 
-
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.yukunlin.ykl.R;
+import com.yukunlin.ykl.fragment.ReadCollectFragment;
+import com.yukunlin.ykl.fragment.SingleCollectFragment;
 
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class CollectFragment extends DialogFragment implements View.OnClickListener {
-
-
+public class CollectActivity extends BaseActivity implements View.OnClickListener {
     private SingleCollectFragment singleCollectFragment;
     private ReadCollectFragment readCollectFragment;
 
@@ -31,26 +23,12 @@ public class CollectFragment extends DialogFragment implements View.OnClickListe
     @ViewInject(R.id.read)
     private TextView readTextView;
 
-
-    public CollectFragment() {
-        // Required empty public constructor
-    }
-
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setStyle(DialogFragment.STYLE_NORMAL, R.style.AppTheme);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_collect, container, false);
-        x.view().inject(this, root);
+        setContentView(R.layout.activity_collect);
+        x.view().inject(this);
         initView();
-
-        return root;
     }
 
     private void initView() {
@@ -59,7 +37,7 @@ public class CollectFragment extends DialogFragment implements View.OnClickListe
         singleTextView.setOnClickListener(this);
         readTextView.setOnClickListener(this);
 
-        getActivity().getSupportFragmentManager().beginTransaction()
+        getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, singleCollectFragment)
                 .show(singleCollectFragment)
                 .commit();
@@ -67,7 +45,7 @@ public class CollectFragment extends DialogFragment implements View.OnClickListe
 
     @Event(value = R.id.back)
     private void backClick(View view) {
-        dismiss();
+        finish();
     }
 
     @Override
@@ -77,7 +55,7 @@ public class CollectFragment extends DialogFragment implements View.OnClickListe
                 singleTextView.setSelected(true);
                 readTextView.setSelected(false);
                 if (!singleCollectFragment.isAdded()) {
-                    getActivity().getSupportFragmentManager()
+                    getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.fragment_container, singleCollectFragment).commit();
                 }
@@ -86,7 +64,7 @@ public class CollectFragment extends DialogFragment implements View.OnClickListe
                 singleTextView.setSelected(false);
                 readTextView.setSelected(true);
                 if (!readCollectFragment.isAdded()) {
-                    getActivity().getSupportFragmentManager()
+                    getSupportFragmentManager()
                             .beginTransaction().
                             replace(R.id.fragment_container, readCollectFragment).commit();
                 }

@@ -17,6 +17,7 @@ import com.makeramen.roundedimageview.RoundedImageView;
 import com.yukunlin.ykl.CumstomView.BeautifulDialog;
 import com.yukunlin.ykl.MyApplication;
 import com.yukunlin.ykl.R;
+import com.yukunlin.ykl.activity.CollectActivity;
 import com.yukunlin.ykl.activity.WelcomeActivity;
 import com.yukunlin.ykl.user.User;
 
@@ -113,5 +114,12 @@ public class MyselfFragment extends DialogFragment {
         });
         FragmentManager fm = getActivity().getSupportFragmentManager();
         modifyProfileFragment.show(fm, "dialogFragment");
+    }
+
+    @Event(value = R.id.collect)
+    private void collectClick(View view) {
+//        CollectFragment fragment = new CollectFragment();
+//        fragment.show(getActivity().getSupportFragmentManager(), "dialogFragment");
+        startActivity(new Intent(getActivity(), CollectActivity.class));
     }
 }
