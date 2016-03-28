@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 
-import com.yukunlin.ykl.MainActivity;
 import com.yukunlin.ykl.R;
 
 import org.xutils.view.annotation.ViewInject;

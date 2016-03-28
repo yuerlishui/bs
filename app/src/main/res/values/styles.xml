@@ -64,4 +64,9 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:background">@drawable/bg_white_item</item>
     </style>
+    <style name="me_line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">#e1e1e1</item>
+    </style>
 </resources>

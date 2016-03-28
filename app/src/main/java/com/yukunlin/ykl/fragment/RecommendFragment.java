@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.yukunlin.ykl.CumstomView.RefreshView;
 import com.yukunlin.ykl.R;
+import com.yukunlin.ykl.adapter.RecommendAdapter;
+import com.yukunlin.ykl.bean.Comment;
 import com.yukunlin.ykl.bean.OneWord;
 import com.yukunlin.ykl.utils.MemoryCache;
 
@@ -43,35 +46,41 @@ import in.srain.cube.views.ptr.PtrHandler;
  * A simple {@link Fragment} subclass.
  */
 public class RecommendFragment extends DialogFragment {
-    @ViewInject(R.id.note)
+    //    @ViewInject(R.id.note)
     private TextView note;
 
-    @ViewInject(R.id.content)
+    //    @ViewInject(R.id.content)
     private TextView content;
 
-    @ViewInject(R.id.picture)
+    //    @ViewInject(R.id.picture)
     private NetworkImageView picture;
 
-    @ViewInject(R.id.translation)
+    //    @ViewInject(R.id.translation)
     private TextView translation;
 
-    @ViewInject(R.id.word)
+    //    @ViewInject(R.id.word)
     private TextView word;
 
-    @ViewInject(R.id.nWord)
+    //    @ViewInject(R.id.nWord)
     private TextView nWord;
 
-    @ViewInject(R.id.adjWord)
+    //    @ViewInject(R.id.adjWord)
     private TextView adjWork;
+
+    private TextView nextWord;
 
     @ViewInject(R.id.ptrLayout)
     PtrClassicFrameLayout ptrLayout;
+
+    @ViewInject(R.id.listView)
+    private ListView listView;
 
     private String url = "http://open.iciba.com/dsapi";
     private RequestQueue mQueue;
     private ImageLoader loader;
     private List<OneWord> wordList;
     private int index = 0;
+
 
     public RecommendFragment() {
         // Required empty public constructor
@@ -86,13 +95,35 @@ public class RecommendFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_recommend, container, false);
+        View headView = LayoutInflater.from(getContext()).inflate(R.layout.recomment_head, listView, false);
         x.view().inject(this, root);
         mQueue = Volley.newRequestQueue(getContext());
         loader = new ImageLoader(mQueue, new MemoryCache());
         initData();
+        initHead(headView);
         queryData();
         initPtr();
+        initListView();
+        nextWordClick();
         return root;
+    }
+
+    private void initListView() {
+        RecommendAdapter adapter = new RecommendAdapter(new ArrayList<Comment>(), getContext());
+        listView.setAdapter(adapter);
+    }
+
+    private void initHead(View view) {
+        note = (TextView) view.findViewById(R.id.note);
+        content = (TextView) view.findViewById(R.id.content);
+        picture = (NetworkImageView) view.findViewById(R.id.picture);
+        translation = (TextView) view.findViewById(R.id.translation);
+        word = (TextView) view.findViewById(R.id.word);
+        nWord = (TextView) view.findViewById(R.id.nWord);
+        adjWork = (TextView) view.findViewById(R.id.adjWord);
+        nextWord = (TextView) view.findViewById(R.id.nextWord);
+
+        listView.addHeaderView(view);
     }
 
     private void initPtr() {
@@ -134,19 +165,22 @@ public class RecommendFragment extends DialogFragment {
 
     }
 
-    @Event(value = R.id.nextWord)
-    private void nextWordClick(View view) {
 
-        if (wordList != null && wordList.size() != 0) {
-            word.setText(wordList.get(index).getWord());
-            adjWork.setText(wordList.get(index).getAdj());
-            nWord.setText(wordList.get(index).getN());
-        }
-        index++;
-        if (index == 5) {
-            index = 0;
-        }
-
+    private void nextWordClick() {
+        nextWord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (wordList != null && wordList.size() != 0) {
+                    word.setText(wordList.get(index).getWord());
+                    adjWork.setText(wordList.get(index).getAdj());
+                    nWord.setText(wordList.get(index).getN());
+                }
+                index++;
+                if (index == 5) {
+                    index = 0;
+                }
+            }
+        });
     }
 
     private void initData() {

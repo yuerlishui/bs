@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.yukunlin.ykl.MainActivity;
 import com.yukunlin.ykl.MyApplication;
 import com.yukunlin.ykl.R;
 import com.yukunlin.ykl.user.User;

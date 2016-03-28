@@ -64,14 +64,18 @@ public class RegisterActivity extends BaseActivity {
 
     @Event(value = R.id.register)
     private void onRegister(View view) {
-        final ProgressDialog dialog = new ProgressDialog(this);
-        dialog.setMessage("请稍后...");
-        dialog.show();
-        User user = MyApplication.getUser();
-        user.setUsername(accountEditText.getText().toString().trim());
-        user.setPassword(passwordEditText.getText().toString().trim());
+//        final ProgressDialog dialog = new ProgressDialog(this);
+//        dialog.setMessage("请稍后...");
+//        dialog.show();
+//        User user = MyApplication.getUser();
+//        user.setUsername(accountEditText.getText().toString().trim());
+//        user.setPassword(passwordEditText.getText().toString().trim());
+
 
         CompleteFragment completeFragment = new CompleteFragment();
+        completeFragment.setAccount(accountEditText.getText().toString().trim());
+        completeFragment.setPassword(passwordEditText.getText().toString().trim());
+//
         completeFragment.show(getSupportFragmentManager(), "dialogFragment");
 //        user.signUp(RegisterActivity.this, new SaveListener() {
 //            @Override

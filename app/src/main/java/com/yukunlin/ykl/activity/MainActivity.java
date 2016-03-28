@@ -1,4 +1,4 @@
-package com.yukunlin.ykl;
+package com.yukunlin.ykl.activity;
 
 
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 import android.support.v4.app.Fragment;
 
+import com.yukunlin.ykl.R;
 import com.yukunlin.ykl.activity.BaseActivity;
 import com.yukunlin.ykl.fragment.MyselfFragment;
 import com.yukunlin.ykl.fragment.RecommendFragment;

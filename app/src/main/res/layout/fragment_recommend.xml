@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="每日一句"
+            android:text="推荐"
             android:textColor="@android:color/white"
             android:textSize="16sp" />
     </RelativeLayout>
@@ -32,142 +32,15 @@
         app:ptr_ratio_of_header_height_to_refresh="1.2"
         app:ptr_resistance="1.5">
 
-        <ScrollView
+        <ListView
+            android:id="@+id/listView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/ptrLayout">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <RelativeLayout
-                    android:id="@+id/oneWord"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp">
-
-                    <TextView
-                        android:id="@+id/word"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="narcotic"
-                        android:textColor="@android:color/holo_blue_light"
-                        android:textSize="30sp" />
-
-                    <TextView
-                        android:id="@+id/adjWord"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/word"
-                        android:layout_marginTop="5dp"
-                        android:text="n.  中午；正午"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/nWord"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/adjWord"
-                        android:text="adj.  正午的"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/nextWord"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_below="@+id/word"
-                        android:background="@drawable/bg_next_word"
-                        android:padding="5dp"
-                        android:text="换一换" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/relativeLayout"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:layout_below="@+id/oneWord"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="20dp"
-                    android:alpha=".8"
-                    android:background="@drawable/bg_date">
-
-                    <TextView
-                        android:id="@+id/month"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="10dp"
-                        android:text="May"
-                        android:textColor="#fff"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/day"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/month"
-                        android:layout_centerHorizontal="true"
-                        android:text="22"
-                        android:textColor="#fff"
-                        android:textSize="18sp" />
-                </RelativeLayout>
-
-                <TextView
-                    android:textColor="#111111"
-                    android:id="@+id/content"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignTop="@+id/relativeLayout"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_toEndOf="@+id/relativeLayout"
-                    android:layout_toRightOf="@+id/relativeLayout"
-                    android:lineSpacingExtra="2dp"
-                    android:maxLines="3"
-                    android:text="I am a slow walker,but I never walk backwards."
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:layout_marginRight="15dp"
-                    android:id="@+id/note"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/content"
-                    android:layout_alignStart="@+id/content"
-                    android:layout_below="@+id/content"
-                    android:layout_marginTop="5dp"
-                    android:maxLines="3"
-                    android:text="我走得很慢，但是我从来不会后退。"
-                    android:textSize="16sp" />
-
-                <com.android.volley.toolbox.NetworkImageView
-                    android:id="@+id/picture"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/note"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginTop="10dp" />
-
-                <TextView
-
-                    android:id="@+id/translation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/picture"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginTop="10dp"
-                    android:lineSpacingExtra="3dp"
-                    android:text="@string/tranlation" />
-            </RelativeLayout>
-        </ScrollView>
+            android:choiceMode="singleChoice"
+            android:listSelector="@android:color/transparent"
+            android:scrollbarStyle="outsideOverlay"></ListView>
 
     </in.srain.cube.views.ptr.PtrClassicFrameLayout>
+
 
 </RelativeLayout>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#ffffff"
+    android:descendantFocusability="blocksDescendants"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:id="@+id/headImageView"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/default_avatar_male"
+        app:riv_corner_radius="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/textSize_medium"
+        android:text="name"
+        android:id="@+id/nameTextView"
+        android:layout_toRightOf="@+id/headImageView"
+
+        android:textColor="#666"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"/>
+
+    <TextView
+        android:id="@+id/contentTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/nameTextView"
+        android:layout_below="@+id/nameTextView"
+        android:layout_marginTop="3dp"
+        android:layout_alignRight="@+id/dateTextView"
+        android:textSize="@dimen/textSize_medium"
+        android:lineSpacingExtra="8dp"
+        android:text=""
+        android:layout_marginBottom="0dp"
+        android:textColor="@color/main_font_color"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@+id/nameTextView"
+        android:layout_marginRight="15dp"
+        android:text="date"
+        android:id="@+id/dateTextView"
+        android:textColor="@color/date_font_color"
+        android:textSize="@dimen/textSize_mini"/>
+
+    <View
+        android:id="@+id/bot_line"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+        style="@style/me_line"/>
+
+</RelativeLayout>
