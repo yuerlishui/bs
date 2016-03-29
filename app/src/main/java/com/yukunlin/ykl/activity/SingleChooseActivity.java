@@ -13,6 +13,8 @@ import com.google.gson.reflect.TypeToken;
 import com.yukunlin.ykl.R;
 import com.yukunlin.ykl.bean.Question;
 
+import org.xutils.DbManager;
+import org.xutils.ex.DbException;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -22,6 +24,8 @@ import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
+
+import cn.bmob.v3.BmobUser;
 
 public class SingleChooseActivity extends BaseActivity {
     private int count;
@@ -39,6 +43,7 @@ public class SingleChooseActivity extends BaseActivity {
 
     @ViewInject(R.id.explaination)
     private TextView tv_explaination;
+    private DbManager dbManager;
 
 
     @Override
@@ -48,6 +53,20 @@ public class SingleChooseActivity extends BaseActivity {
         x.view().inject(this);
         initData();
         initView();
+        initDB();
+    }
+
+    private void initDB() {
+        DbManager.DaoConfig config = new DbManager.DaoConfig()
+                .setDbName(BmobUser.getCurrentUser(this).getObjectId()+"singlecollect")
+                .setDbVersion(1)
+                .setDbUpgradeListener(new DbManager.DbUpgradeListener() {
+                    @Override
+                    public void onUpgrade(DbManager db, int oldVersion, int newVersion) {
+
+                    }
+                });
+        dbManager = x.getDb(config);
     }
 
     private void initRadioGroup() {
@@ -136,6 +155,11 @@ public class SingleChooseActivity extends BaseActivity {
                             List<Question> newList = new ArrayList<Question>();
                             for (int i = 0; i < wrongList.size(); i++) {
                                 newList.add(list.get(wrongList.get(i)));
+                            }
+                            try {
+                                dbManager.save(newList);
+                            } catch (DbException e) {
+                                e.printStackTrace();
                             }
                             list.clear();
                             for (int i = 0; i < newList.size(); i++) {

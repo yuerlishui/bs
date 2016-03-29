@@ -41,6 +41,8 @@ public class CollectActivity extends BaseActivity implements View.OnClickListene
                 .replace(R.id.fragment_container, singleCollectFragment)
                 .show(singleCollectFragment)
                 .commit();
+        singleTextView.setSelected(true);
+        readTextView.setSelected(false);
     }
 
     @Event(value = R.id.back)
