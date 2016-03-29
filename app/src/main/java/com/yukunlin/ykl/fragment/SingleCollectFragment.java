@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.yukunlin.ykl.R;
+import com.yukunlin.ykl.activity.SingleChooseActivity;
+import com.yukunlin.ykl.adapter.SingleCollectAdapter;
 import com.yukunlin.ykl.bean.Question;
 import com.yukunlin.ykl.database.TranHistory;
 
@@ -66,6 +68,8 @@ public class SingleCollectFragment extends DialogFragment {
         try {
             List<Question> list = dbManager.selector(Question.class).findAll();
             Log.d("TAG", "loadData: " + list.toString());
+            SingleCollectAdapter adapter = new SingleCollectAdapter(getContext(),list);
+            listView.setAdapter(adapter);
         } catch (DbException e) {
             e.printStackTrace();
         }

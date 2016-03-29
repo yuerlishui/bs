@@ -1,17 +1,38 @@
 package com.yukunlin.ykl.bean;
 
+import org.xutils.db.annotation.Column;
+import org.xutils.db.annotation.Table;
+
 /**
  * Created by ��Ⱥ on 2015/5/27.
  */
+@Table(name = "question")
 public class Question {
+    @Column(name = "question")
     public String question;
+
+    @Column(name = "answerA")
     public String answerA;
+
+    @Column(name = "answerB")
     public String answerB;
+
+    @Column(name = "answerC")
     public String answerC;
+
+    @Column(name = "answerD")
     public String answerD;
+
+    @Column(name = "answer")
     public int answer;
+
+    @Column(name = "explaination")
     public String explaination;
-    public int ID;
+
+    @Column(name = "id", isId = true)
+    public int id;
+
+    @Column(name = "answerB")
     public int selectedAnswer;
 
     public String getQuestion() {
@@ -70,12 +91,12 @@ public class Question {
         this.explaination = explaination;
     }
 
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getSelectedAnswer() {
@@ -96,7 +117,7 @@ public class Question {
                 ", answerD='" + answerD + '\'' +
                 ", answer=" + answer +
                 ", explaination='" + explaination + '\'' +
-                ", ID=" + ID +
+                ", id=" + id +
                 ", selectedAnswer=" + selectedAnswer +
                 '}';
     }
