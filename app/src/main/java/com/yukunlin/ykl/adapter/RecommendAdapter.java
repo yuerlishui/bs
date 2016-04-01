@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.yukunlin.ykl.R;
-import com.yukunlin.ykl.bean.Comment;
+import com.yukunlin.ykl.module.Comment;
 
 import java.util.List;
 
@@ -58,6 +58,7 @@ public class RecommendAdapter extends BaseAdapter {
         holder.nameTextView.setText(comment.getUserName());
         holder.contentTextView.setText(comment.getContent());
         holder.dateTextView.setText(comment.getDate());
+        holder.headImageView.setImageResource(R.drawable.default_avatar_male);
 
         return convertView;
     }

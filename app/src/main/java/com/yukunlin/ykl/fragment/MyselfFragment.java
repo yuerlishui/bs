@@ -65,18 +65,15 @@ public class MyselfFragment extends DialogFragment {
     }
 
     private void initUserData() {
-
         User currentUser = BmobUser.getCurrentUser(getContext(), User.class);
         nameTextView.setText(currentUser.getName());
         if (currentUser.getSex().equals("man")) {
             sexImageView.setImageResource(R.drawable.personal_boys);
             avatar.setImageResource(R.drawable.default_avatar_male);
-
         } else {
             sexImageView.setImageResource(R.drawable.icon_modify_girls_active);
             avatar.setImageResource(R.drawable.default_avatar_female);
         }
-
     }
 
     @Event(value = R.id.exit)
@@ -106,11 +103,13 @@ public class MyselfFragment extends DialogFragment {
     @Event(value = R.id.setting)
     private void settingClick(View view) {
         ProfileFragment modifyProfileFragment = new ProfileFragment();
+
         modifyProfileFragment.setOnFinishListener(new ProfileFragment.OnFinishListener() {
             @Override
-            public void onFinish() {
-                // updatePerson();
+            public void onFinish(String name) {
+                nameTextView.setText(name);
             }
+
         });
         FragmentManager fm = getActivity().getSupportFragmentManager();
         modifyProfileFragment.show(fm, "dialogFragment");
@@ -118,8 +117,6 @@ public class MyselfFragment extends DialogFragment {
 
     @Event(value = R.id.collect)
     private void collectClick(View view) {
-//        CollectFragment fragment = new CollectFragment();
-//        fragment.show(getActivity().getSupportFragmentManager(), "dialogFragment");
         startActivity(new Intent(getActivity(), CollectActivity.class));
     }
 }

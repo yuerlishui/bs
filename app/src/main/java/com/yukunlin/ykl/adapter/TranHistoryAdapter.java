@@ -8,10 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.yukunlin.ykl.R;
-import com.yukunlin.ykl.bean.History;
-import com.yukunlin.ykl.database.TranHistory;
+import com.yukunlin.ykl.module.TranHistory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

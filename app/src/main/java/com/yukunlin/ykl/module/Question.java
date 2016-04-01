@@ -1,4 +1,4 @@
-package com.yukunlin.ykl.bean;
+package com.yukunlin.ykl.module;
 
 import org.xutils.db.annotation.Column;
 import org.xutils.db.annotation.Table;

@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,13 +23,12 @@ import com.android.volley.toolbox.Volley;
 import com.yukunlin.ykl.CumstomView.RefreshView;
 import com.yukunlin.ykl.R;
 import com.yukunlin.ykl.adapter.RecommendAdapter;
-import com.yukunlin.ykl.bean.Comment;
-import com.yukunlin.ykl.bean.OneWord;
+import com.yukunlin.ykl.module.Comment;
+import com.yukunlin.ykl.module.OneWord;
 import com.yukunlin.ykl.utils.MemoryCache;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
@@ -46,28 +46,17 @@ import in.srain.cube.views.ptr.PtrHandler;
  * A simple {@link Fragment} subclass.
  */
 public class RecommendFragment extends DialogFragment {
-    //    @ViewInject(R.id.note)
+
     private TextView note;
-
-    //    @ViewInject(R.id.content)
     private TextView content;
-
-    //    @ViewInject(R.id.picture)
     private NetworkImageView picture;
-
-    //    @ViewInject(R.id.translation)
     private TextView translation;
-
-    //    @ViewInject(R.id.word)
     private TextView word;
-
-    //    @ViewInject(R.id.nWord)
     private TextView nWord;
-
-    //    @ViewInject(R.id.adjWord)
     private TextView adjWork;
-
     private TextView nextWord;
+    private TextView commentTextView;
+    private LinearLayout favour_ly;
 
     @ViewInject(R.id.ptrLayout)
     PtrClassicFrameLayout ptrLayout;
@@ -105,12 +94,23 @@ public class RecommendFragment extends DialogFragment {
         initPtr();
         initListView();
         nextWordClick();
+
         return root;
     }
 
+    private void commentClick(final String sid) {
+        commentTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditCommentFragment fragment = new EditCommentFragment();
+                fragment.setSid(sid);
+                fragment.show(getActivity().getSupportFragmentManager(), "dialogFragment");
+            }
+        });
+    }
+
     private void initListView() {
-        RecommendAdapter adapter = new RecommendAdapter(new ArrayList<Comment>(), getContext());
-        listView.setAdapter(adapter);
+
     }
 
     private void initHead(View view) {
@@ -122,6 +122,8 @@ public class RecommendFragment extends DialogFragment {
         nWord = (TextView) view.findViewById(R.id.nWord);
         adjWork = (TextView) view.findViewById(R.id.adjWord);
         nextWord = (TextView) view.findViewById(R.id.nextWord);
+        commentTextView = (TextView) view.findViewById(R.id.commentTextView);
+        favour_ly = (LinearLayout) view.findViewById(R.id.favour_ly);
 
         listView.addHeaderView(view);
     }
@@ -132,6 +134,7 @@ public class RecommendFragment extends DialogFragment {
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
                 initData();
+                queryData();
             }
 
             @Override
@@ -151,7 +154,6 @@ public class RecommendFragment extends DialogFragment {
             @Override
             public void onSuccess(List<OneWord> list) {
                 wordList.addAll(list);
-                initWord();
             }
 
             @Override
@@ -159,10 +161,21 @@ public class RecommendFragment extends DialogFragment {
                 Toast.makeText(getActivity(), "获取数据失败   " + s, Toast.LENGTH_SHORT).show();
             }
         });
-    }
+        BmobQuery<Comment> bmobQuery = new BmobQuery<>();
+        bmobQuery.findObjects(getContext(), new FindListener<Comment>() {
+            @Override
+            public void onSuccess(List<Comment> list) {
+                RecommendAdapter adapter = new RecommendAdapter(list, getContext());
+                listView.setAdapter(adapter);
+                ptrLayout.refreshComplete();
+            }
 
-    private void initWord() {
-
+            @Override
+            public void onError(int i, String s) {
+                ptrLayout.refreshComplete();
+                Toast.makeText(getActivity(), "获取数据失败   " + s, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 
@@ -187,7 +200,7 @@ public class RecommendFragment extends DialogFragment {
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                ptrLayout.refreshComplete();
+
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     String notes = jsonObject.getString("note");
@@ -195,6 +208,9 @@ public class RecommendFragment extends DialogFragment {
                     String picture2 = jsonObject.getString("picture2");
                     String translations = jsonObject.getString("translation");
                     String tts = jsonObject.getString("tts");
+                    String sid = jsonObject.getString("sid");
+                    String dateline = jsonObject.getString("dateline");
+                    commentClick(sid);
                     note.setText(notes);
                     content.setText(contents);
                     translation.setText(translations);
@@ -211,6 +227,8 @@ public class RecommendFragment extends DialogFragment {
             }
         });
         mQueue.add(request);
+
+
 
     }
 

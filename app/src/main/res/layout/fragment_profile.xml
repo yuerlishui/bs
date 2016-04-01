@@ -53,6 +53,12 @@
                     android:text="@string/save"
                     android:textColor="#e84417"
                     android:textSize="@dimen/textSize_large" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_alignParentBottom="true"
+                    android:background="#e1e1e1"></View>
             </RelativeLayout>
 
             <RelativeLayout
@@ -128,7 +134,6 @@
                     android:textSize="@dimen/textSize_large" />
 
                 <EditText
-                    android:text="yukl"
                     android:id="@+id/nameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -136,8 +141,11 @@
                     android:layout_centerVertical="true"
                     android:layout_marginRight="5dp"
                     android:background="@null"
+                    android:gravity="center_vertical|right"
                     android:maxLength="15"
+                    android:minWidth="50dp"
                     android:singleLine="true"
+                    android:text=""
                     android:textSize="@dimen/textSize_large" />
             </RelativeLayout>
 
@@ -145,7 +153,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:layout_below="@+id/cityLayout"
+                android:layout_below="@+id/phoneLayout"
                 android:layout_marginBottom="10dp"
                 android:background="#e1e1e1" />
 
@@ -153,7 +161,7 @@
                 android:id="@+id/localLayout"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/titleHeight"
-                android:layout_below="@+id/cityLayout"
+                android:layout_below="@+id/phoneLayout"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/bg_white_item"
                 android:paddingLeft="14dp"
@@ -210,13 +218,17 @@
                     android:text="手机"
                     android:textSize="@dimen/textSize_large" />
 
-                <TextView
-                    android:id="@+id/phoneTextView"
+                <EditText
+                    android:minWidth="50dp"
+                    android:gravity="center_vertical|right"
+                    android:id="@+id/phoneEditView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="5dp"
+                    android:background="@null"
+                    android:inputType="number"
                     android:text=""
                     android:textColor="#cccccc"
                     android:textSize="@dimen/textSize_large" />
@@ -230,39 +242,7 @@
                 android:background="#e1e1e1" />
 
             <RelativeLayout
-                android:id="@+id/cityLayout"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/titleHeight"
-                android:layout_below="@+id/phoneLayout"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/bg_white_item"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="地区"
-                    android:textSize="@dimen/textSize_large" />
-
-                <TextView
-                    android:id="@+id/cityTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="20dp"
-                    android:text=""
-                    android:textSize="@dimen/textSize_large" />
-
-                <ImageView
-                    style="@style/me_right_arrow"
-                    android:layout_marginRight="0dp" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/modifyPasswordLayout"
+                android:id="@+id/resetPwdLayout"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/titleHeight"
                 android:layout_below="@+id/localLayout"
@@ -303,7 +283,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:layout_below="@+id/modifyPasswordLayout"
+                android:layout_below="@+id/resetPwdLayout"
                 android:layout_marginBottom="10dp"
                 android:background="#e1e1e1" />
 

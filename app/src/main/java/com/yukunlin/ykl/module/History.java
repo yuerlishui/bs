@@ -1,4 +1,4 @@
-package com.yukunlin.ykl.bean;
+package com.yukunlin.ykl.module;
 
 /**
  * Created by yukunlin on 16/3/23.

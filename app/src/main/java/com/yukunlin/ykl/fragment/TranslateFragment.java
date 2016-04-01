@@ -19,7 +19,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.yukunlin.ykl.R;
 import com.yukunlin.ykl.adapter.TranHistoryAdapter;
-import com.yukunlin.ykl.database.TranHistory;
+import com.yukunlin.ykl.module.TranHistory;
 import com.yukunlin.ykl.utils.MD5_baidu_trans;
 
 import org.json.JSONArray;

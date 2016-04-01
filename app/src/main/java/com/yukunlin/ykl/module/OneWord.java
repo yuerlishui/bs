@@ -1,4 +1,4 @@
-package com.yukunlin.ykl.bean;
+package com.yukunlin.ykl.module;
 
 import cn.bmob.v3.BmobObject;
 

@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.yukunlin.ykl.R;
-import com.yukunlin.ykl.bean.Question;
+import com.yukunlin.ykl.module.Question;
 
 import org.xutils.DbManager;
 import org.xutils.ex.DbException;

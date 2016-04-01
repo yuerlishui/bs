@@ -80,4 +80,6 @@
     <color name="tomato_color">#e84417</color>
     <color name="text_color_brown">#666666</color>
 
+    <color name="tomato_star">#e84417</color>
+
 </resources>

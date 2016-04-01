@@ -1,9 +1,11 @@
-package com.yukunlin.ykl.bean;
+package com.yukunlin.ykl.module;
+
+import cn.bmob.v3.BmobObject;
 
 /**
  * Created by yukunlin on 16/3/28.
  */
-public class Comment {
+public class Comment extends BmobObject {
     private String avatar;
     private String userName;
     private String content;
