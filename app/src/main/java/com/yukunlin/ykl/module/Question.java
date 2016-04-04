@@ -32,7 +32,7 @@ public class Question {
     @Column(name = "id", isId = true)
     public int id;
 
-    @Column(name = "answerB")
+    @Column(name = "selectedAnswer")
     public int selectedAnswer;
 
     public String getQuestion() {

@@ -227,9 +227,6 @@ public class RecommendFragment extends DialogFragment {
             }
         });
         mQueue.add(request);
-
-
-
     }
 
 }

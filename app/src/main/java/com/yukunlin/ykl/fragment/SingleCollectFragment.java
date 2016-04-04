@@ -51,11 +51,14 @@ public class SingleCollectFragment extends DialogFragment {
 
     private void initDB() {
         DbManager.DaoConfig config = new DbManager.DaoConfig()
-                .setDbName(BmobUser.getCurrentUser(getContext()).getObjectId() + "singlecollect")
+                .setDbName(BmobUser.getCurrentUser(
+                        getContext()).getObjectId() + "singlecollect")
                 .setDbVersion(1)
-                .setDbUpgradeListener(new DbManager.DbUpgradeListener() {
+                .setDbUpgradeListener(
+                        new DbManager.DbUpgradeListener() {
                     @Override
-                    public void onUpgrade(DbManager db, int oldVersion, int newVersion) {
+                    public void onUpgrade(
+                            DbManager db, int oldVersion, int newVersion) {
 
                     }
                 });

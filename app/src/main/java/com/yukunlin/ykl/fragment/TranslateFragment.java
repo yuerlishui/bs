@@ -135,7 +135,6 @@ public class TranslateFragment extends DialogFragment {
         String key = "ndM_MLjJQrc2FfNV401n";
         String md5Code = MD5_baidu_trans.GetMD5Code(appid + q + salt + key);
 
-
         try {
             encode = URLEncoder.encode(q, "utf-8");
         } catch (UnsupportedEncodingException e) {
