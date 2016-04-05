@@ -12,11 +12,280 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/model"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="#f4f3ef"
+                android:gravity="center"
+                android:text="闯关模式"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/topHint"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_below="@+id/model"
+                android:background="@drawable/bg_small_layout"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:text="单项选择"
+                android:textColor="@color/text_color_brown" />
+
+            <LinearLayout
+                android:id="@+id/singleLevel"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="答题" />
+                android:layout_below="@+id/topHint"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout1"
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/oneWord"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:alpha=".8">
+
+                    <TextView
+                        android:id="@+id/primary"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/bg_unlock"
+                        android:gravity="center"
+                        android:text="初级"
+                        android:textColor="#fff"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/primary"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:text="已解锁" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout2"
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/oneWord"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:alpha=".8">
+
+                    <TextView
+                        android:id="@+id/month2"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/bg_text"
+                        android:gravity="center"
+                        android:text="中级"
+                        android:textColor="#fff"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/month2"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:text="未解锁" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout3"
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/oneWord"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:alpha=".8">
+
+                    <TextView
+                        android:id="@+id/month3"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/bg_text"
+                        android:gravity="center"
+                        android:text="高级"
+                        android:textColor="#fff"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/month3"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:text="未解锁" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/read"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_below="@+id/singleLevel"
+                android:background="@drawable/bg_small_layout"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:text="阅读理解"
+                android:textColor="@color/text_color_brown" />
+
+            <LinearLayout
+                android:id="@+id/readLevel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/read"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout4"
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/oneWord"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:alpha=".8">
+
+                    <TextView
+                        android:id="@+id/month4"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/bg_unlock"
+                        android:gravity="center"
+                        android:text="初级"
+                        android:textColor="#fff"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/month4"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:text="已解锁" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout5"
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/oneWord"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:alpha=".8">
+
+                    <TextView
+                        android:id="@+id/month5"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/bg_text"
+                        android:gravity="center"
+                        android:text="中级"
+                        android:textColor="#fff"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/month5"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:text="未解锁" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout6"
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/oneWord"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:alpha=".8">
+
+                    <TextView
+                        android:id="@+id/month6"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/bg_text"
+                        android:gravity="center"
+                        android:text="高级"
+                        android:textColor="#fff"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/month6"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:text="未解锁" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lianxi"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_below="@+id/readLevel"
+                android:background="@drawable/bg_title"
+                android:gravity="center"
+                android:text="练习模式"
+                android:textSize="18sp" />
+
+
+            <com.yukunlin.ykl.CumstomView.MyGridView
+                android:id="@+id/gridView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/lianxi"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:horizontalSpacing="5dp"
+                android:numColumns="3"
+                android:verticalSpacing="5dp"></com.yukunlin.ykl.CumstomView.MyGridView>
         </RelativeLayout>
     </ScrollView>
 

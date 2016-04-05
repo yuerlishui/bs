@@ -8,17 +8,28 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 
 import com.yukunlin.ykl.R;
 import com.yukunlin.ykl.activity.SingleChooseActivity;
+import com.yukunlin.ykl.adapter.TestAdapter;
 
 import org.xutils.view.annotation.Event;
+import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class TestFragment extends DialogFragment {
+
+    @ViewInject(R.id.gridView)
+    private GridView gridView;
+
+    private List<String> list;
 
     public TestFragment() {
         // Required empty public constructor
@@ -34,10 +45,21 @@ public class TestFragment extends DialogFragment {
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_test, container, false);
         x.view().inject(this, root);
+        initView();
         return root;
     }
 
-    @Event(value = R.id.button)
+    private void initView() {
+        list = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            list.add(i + 1 + "");
+        }
+        TestAdapter adapter = new TestAdapter(list, getContext());
+        gridView.setAdapter(adapter);
+        gridView.setFocusable(false);
+    }
+
+    @Event(value = R.id.primary)
     private void buttonClick(View view) {
         Intent intent = new Intent(getActivity(), SingleChooseActivity.class);
         startActivity(intent);
