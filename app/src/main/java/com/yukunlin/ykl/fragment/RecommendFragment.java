@@ -23,8 +23,8 @@ import com.android.volley.toolbox.Volley;
 import com.yukunlin.ykl.CumstomView.RefreshView;
 import com.yukunlin.ykl.R;
 import com.yukunlin.ykl.adapter.RecommendAdapter;
-import com.yukunlin.ykl.module.Comment;
-import com.yukunlin.ykl.module.OneWord;
+import com.yukunlin.ykl.model.Comment;
+import com.yukunlin.ykl.model.OneWord;
 import com.yukunlin.ykl.utils.MemoryCache;
 
 import org.json.JSONException;

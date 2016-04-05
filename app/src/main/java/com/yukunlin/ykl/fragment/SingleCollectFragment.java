@@ -12,7 +12,7 @@ import android.widget.ListView;
 
 import com.yukunlin.ykl.R;
 import com.yukunlin.ykl.adapter.SingleCollectAdapter;
-import com.yukunlin.ykl.module.Question;
+import com.yukunlin.ykl.model.Question;
 
 import org.xutils.DbManager;
 import org.xutils.ex.DbException;

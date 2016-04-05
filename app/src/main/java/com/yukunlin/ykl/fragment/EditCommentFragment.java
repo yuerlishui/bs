@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.yukunlin.ykl.R;
-import com.yukunlin.ykl.module.Comment;
+import com.yukunlin.ykl.model.Comment;
 import com.yukunlin.ykl.user.User;
 
 import org.xutils.view.annotation.Event;

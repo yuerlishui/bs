@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.yukunlin.ykl.R;
-import com.yukunlin.ykl.module.TranHistory;
+import com.yukunlin.ykl.model.TranHistory;
 
 import java.util.List;
 

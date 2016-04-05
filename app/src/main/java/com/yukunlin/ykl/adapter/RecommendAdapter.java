@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.yukunlin.ykl.R;
-import com.yukunlin.ykl.module.Comment;
+import com.yukunlin.ykl.model.Comment;
 
 import java.util.List;
 

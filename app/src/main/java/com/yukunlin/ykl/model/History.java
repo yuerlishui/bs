@@ -1,4 +1,4 @@
-package com.yukunlin.ykl.module;
+package com.yukunlin.ykl.model;
 
 /**
  * Created by yukunlin on 16/3/23.
