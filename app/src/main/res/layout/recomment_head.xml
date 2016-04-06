@@ -65,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:text="May"
+            android:text="Apr"
             android:textColor="#fff"
             android:textSize="18sp" />
 
@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/month"
             android:layout_centerHorizontal="true"
-            android:text="22"
+            android:text="05"
             android:textColor="#fff"
             android:textSize="18sp" />
     </RelativeLayout>
