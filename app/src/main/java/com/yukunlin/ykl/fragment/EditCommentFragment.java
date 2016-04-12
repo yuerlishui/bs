@@ -75,6 +75,8 @@ public class EditCommentFragment extends DialogFragment {
         if (!content.getText().toString().trim().isEmpty()) {
             comment.setContent(content.getText().toString().trim());
             comment.setWordId(sid);
+            String time = String.valueOf(System.currentTimeMillis());
+            comment.setDate(time);
             comment.setUserName(currentUser.getName());
             comment.save(getContext(), new SaveListener() {
                 @Override

@@ -16,7 +16,7 @@
             android:layout_centerInParent="true"
             android:gravity="center"
             android:text="推荐"
-            android:textColor="@android:color/black"
+
             android:textSize="16sp" />
 
         <View

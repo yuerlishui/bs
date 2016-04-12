@@ -71,22 +71,22 @@ public class SingleCollectFragment extends DialogFragment {
 
             @Override
             public void create(SwipeMenu menu) {
-                // create "open" item
-                SwipeMenuItem openItem = new SwipeMenuItem(
-                        getContext());
-                // set item background
-                openItem.setBackground(new ColorDrawable(Color.rgb(0xC9, 0xC9,
-                        0xCE)));
-                // set item width
-                openItem.setWidth(SimpleUtils.dip2px(getContext(), 90));
-                // set item title
-                openItem.setTitle("Open");
-                // set item title fontsize
-                openItem.setTitleSize(18);
-                // set item title font color
-                openItem.setTitleColor(Color.WHITE);
-                // add to menu
-                menu.addMenuItem(openItem);
+//                // create "open" item
+//                SwipeMenuItem openItem = new SwipeMenuItem(
+//                        getContext());
+//                // set item background
+//                openItem.setBackground(new ColorDrawable(Color.rgb(0xC9, 0xC9,
+//                        0xCE)));
+//                // set item width
+//                openItem.setWidth(SimpleUtils.dip2px(getContext(), 90));
+//                // set item title
+//                openItem.setTitle("Open");
+//                // set item title fontsize
+//                openItem.setTitleSize(18);
+//                // set item title font color
+//                openItem.setTitleColor(Color.WHITE);
+//                // add to menu
+//                menu.addMenuItem(openItem);
 
                 // create "delete" item
                 SwipeMenuItem deleteItem = new SwipeMenuItem(
@@ -105,7 +105,7 @@ public class SingleCollectFragment extends DialogFragment {
         // set creator
         listView.setMenuCreator(creator);
         // other setting
-		listView.setCloseInterpolator(new BounceInterpolator());
+        listView.setCloseInterpolator(new BounceInterpolator());
 
     }
 
@@ -140,10 +140,6 @@ public class SingleCollectFragment extends DialogFragment {
                         case 0:
                             // open
                             //   open(item);
-                            break;
-                        case 1:
-                            // delete
-//					delete(item);
                             try {
                                 dbManager.delete(list.get(position));
                             } catch (DbException e) {
@@ -151,6 +147,11 @@ public class SingleCollectFragment extends DialogFragment {
                             }
                             list.remove(position);
                             adapter.notifyDataSetChanged();
+                            break;
+                        case 1:
+                            // delete
+//					delete(item);
+
                             break;
                     }
                 }

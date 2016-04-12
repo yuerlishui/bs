@@ -1,12 +1,15 @@
 package com.yukunlin.ykl.fragment;
 
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -29,10 +32,13 @@ import com.yukunlin.ykl.utils.MemoryCache;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
@@ -57,6 +63,10 @@ public class RecommendFragment extends DialogFragment {
     private TextView nextWord;
     private TextView commentTextView;
     private LinearLayout favour_ly;
+    private ImageView favourImageView;
+    private TextView favourCount;
+    private TextView day;
+    private ImageView tts;
 
     @ViewInject(R.id.ptrLayout)
     PtrClassicFrameLayout ptrLayout;
@@ -69,6 +79,8 @@ public class RecommendFragment extends DialogFragment {
     private ImageLoader loader;
     private List<OneWord> wordList;
     private int index = 0;
+    private String sid;
+    private String ttsUrl;
 
 
     public RecommendFragment() {
@@ -90,11 +102,8 @@ public class RecommendFragment extends DialogFragment {
         loader = new ImageLoader(mQueue, new MemoryCache());
         initData();
         initHead(headView);
-        queryData();
         initPtr();
-        initListView();
         nextWordClick();
-
         return root;
     }
 
@@ -107,11 +116,32 @@ public class RecommendFragment extends DialogFragment {
                 fragment.show(getActivity().getSupportFragmentManager(), "dialogFragment");
             }
         });
+
+        favour_ly.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                favourImageView.setImageResource(R.drawable.icon_like_actived);
+                favourCount.setText("1");
+            }
+        });
+        tts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MediaPlayer mediaPlayer = new MediaPlayer();
+                try {
+                    if (ttsUrl != null) {
+                        mediaPlayer.setDataSource(ttsUrl);
+                    }
+                    mediaPlayer.prepare();
+                    mediaPlayer.start();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
     }
 
-    private void initListView() {
-
-    }
 
     private void initHead(View view) {
         note = (TextView) view.findViewById(R.id.note);
@@ -124,6 +154,11 @@ public class RecommendFragment extends DialogFragment {
         nextWord = (TextView) view.findViewById(R.id.nextWord);
         commentTextView = (TextView) view.findViewById(R.id.commentTextView);
         favour_ly = (LinearLayout) view.findViewById(R.id.favour_ly);
+        favourImageView = (ImageView) view.findViewById(R.id.favourImageView);
+        favourCount = (TextView) view.findViewById(R.id.favourCount);
+        day = (TextView) view.findViewById(R.id.day);
+        tts = (ImageView) view.findViewById(R.id.tts);
+
 
         listView.addHeaderView(view);
     }
@@ -149,7 +184,8 @@ public class RecommendFragment extends DialogFragment {
 
     private void queryData() {
         wordList = new ArrayList<>();
-        BmobQuery<OneWord> query = new BmobQuery<OneWord>();
+        BmobQuery<OneWord> query = new BmobQuery<>();
+
         query.findObjects(getContext(), new FindListener<OneWord>() {
             @Override
             public void onSuccess(List<OneWord> list) {
@@ -162,11 +198,15 @@ public class RecommendFragment extends DialogFragment {
             }
         });
         BmobQuery<Comment> bmobQuery = new BmobQuery<>();
+        bmobQuery.addWhereEqualTo("wordId", sid);
+        Log.d("TAG", "queryData: " + sid);
         bmobQuery.findObjects(getContext(), new FindListener<Comment>() {
             @Override
             public void onSuccess(List<Comment> list) {
+                Collections.reverse(list);
                 RecommendAdapter adapter = new RecommendAdapter(list, getContext());
                 listView.setAdapter(adapter);
+                commentTextView.setText(list.size() + "");
                 ptrLayout.refreshComplete();
             }
 
@@ -198,6 +238,8 @@ public class RecommendFragment extends DialogFragment {
 
     private void initData() {
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+
+
             @Override
             public void onResponse(String response) {
 
@@ -207,14 +249,18 @@ public class RecommendFragment extends DialogFragment {
                     String contents = jsonObject.getString("content");
                     String picture2 = jsonObject.getString("picture2");
                     String translations = jsonObject.getString("translation");
-                    String tts = jsonObject.getString("tts");
-                    String sid = jsonObject.getString("sid");
+                    ttsUrl = jsonObject.getString("tts");
+                    sid = jsonObject.getString("sid");
                     String dateline = jsonObject.getString("dateline");
+                    String[] split = dateline.split("-");
+                    day.setText(split[2]);
                     commentClick(sid);
+                    queryData();
                     note.setText(notes);
                     content.setText(contents);
-                    translation.setText(translations);
+                    translation.setText(translations.substring(5));
                     picture.setImageUrl(picture2, loader);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -228,5 +274,6 @@ public class RecommendFragment extends DialogFragment {
         });
         mQueue.add(request);
     }
+
 
 }
