@@ -144,6 +144,11 @@ public class SingleCollectFragment extends DialogFragment {
                         case 1:
                             // delete
 //					delete(item);
+                            try {
+                                dbManager.delete(list.get(position));
+                            } catch (DbException e) {
+                                e.printStackTrace();
+                            }
                             list.remove(position);
                             adapter.notifyDataSetChanged();
                             break;
