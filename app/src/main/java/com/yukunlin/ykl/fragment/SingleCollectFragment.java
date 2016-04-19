@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.BounceInterpolator;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.yukunlin.ykl.R;
@@ -106,6 +107,14 @@ public class SingleCollectFragment extends DialogFragment {
         listView.setMenuCreator(creator);
         // other setting
         listView.setCloseInterpolator(new BounceInterpolator());
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ShowSingleFragment fragment = new ShowSingleFragment();
+                fragment.setData(list.get(position));
+                fragment.show(getActivity().getSupportFragmentManager(), "dialogFragment");
+            }
+        });
 
     }
 
@@ -128,9 +137,11 @@ public class SingleCollectFragment extends DialogFragment {
     private void loadData() {
         try {
             list = dbManager.selector(Question.class).findAll();
-            Log.d("TAG", "loadData: " + list.toString());
             adapter = new SingleCollectAdapter(getContext(), list);
-            listView.setAdapter(adapter);
+            if (list != null) {
+                listView.setAdapter(adapter);
+            }
+
             // step 2. listener item click event
             listView.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
                 @Override
