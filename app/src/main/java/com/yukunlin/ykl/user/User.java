@@ -57,7 +57,7 @@ public class User extends BmobUser {
     public void setReading2(boolean reading2) {
         this.reading2 = reading2;
     }
-
+ 
     public boolean isReading3() {
         return reading3;
     }
