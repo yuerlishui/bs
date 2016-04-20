@@ -10,59 +10,58 @@ public class User extends BmobUser {
     private String nick;
     private Integer age;
     private String name;
-    private boolean singleChoice1;
-    private boolean singleChoice2;
-    private boolean singleChoice3 ;
-    private boolean reading1 ;
-    private boolean reading2;
-    private boolean reading3;
+    private String singleChoice1;
+    private String singleChoice2;
+    private String singleChoice3 ;
+    private String reading1 ;
+    private String reading2;
+    private String reading3;
 
-
-    public boolean isSingleChoice1() {
+    public String getSingleChoice1() {
         return singleChoice1;
     }
 
-    public void setSingleChoice1(boolean singleChoice1) {
+    public void setSingleChoice1(String singleChoice1) {
         this.singleChoice1 = singleChoice1;
     }
 
-    public boolean isSingleChoice2() {
+    public String getSingleChoice2() {
         return singleChoice2;
     }
 
-    public void setSingleChoice2(boolean singleChoice2) {
+    public void setSingleChoice2(String singleChoice2) {
         this.singleChoice2 = singleChoice2;
     }
 
-    public boolean isSingleChoice3() {
+    public String getSingleChoice3() {
         return singleChoice3;
     }
 
-    public void setSingleChoice3(boolean singleChoice3) {
+    public void setSingleChoice3(String singleChoice3) {
         this.singleChoice3 = singleChoice3;
     }
 
-    public boolean isReading1() {
+    public String getReading1() {
         return reading1;
     }
 
-    public void setReading1(boolean reading1) {
+    public void setReading1(String reading1) {
         this.reading1 = reading1;
     }
 
-    public boolean isReading2() {
+    public String getReading2() {
         return reading2;
     }
 
-    public void setReading2(boolean reading2) {
+    public void setReading2(String reading2) {
         this.reading2 = reading2;
     }
 
-    public boolean isReading3() {
+    public String getReading3() {
         return reading3;
     }
 
-    public void setReading3(boolean reading3) {
+    public void setReading3(String reading3) {
         this.reading3 = reading3;
     }
 
@@ -105,12 +104,12 @@ public class User extends BmobUser {
                 ", nick='" + nick + '\'' +
                 ", age=" + age +
                 ", name='" + name + '\'' +
-                ", singleChoice1=" + singleChoice1 +
-                ", singleChoice2=" + singleChoice2 +
-                ", singleChoice3=" + singleChoice3 +
-                ", reading1=" + reading1 +
-                ", reading2=" + reading2 +
-                ", reading3=" + reading3 +
+                ", singleChoice1='" + singleChoice1 + '\'' +
+                ", singleChoice2='" + singleChoice2 + '\'' +
+                ", singleChoice3='" + singleChoice3 + '\'' +
+                ", reading1='" + reading1 + '\'' +
+                ", reading2='" + reading2 + '\'' +
+                ", reading3='" + reading3 + '\'' +
                 '}';
     }
 }

@@ -143,12 +143,12 @@ public class CompleteFragment extends DialogFragment {
             } else {
                 MyApplication.getUser().setSex("woman");
             }
-            MyApplication.getUser().setSingleChoice1(true);
-            MyApplication.getUser().setSingleChoice2(false);
-            MyApplication.getUser().setSingleChoice3(false);
-            MyApplication.getUser().setReading1(true);
-            MyApplication.getUser().setReading2(false);
-            MyApplication.getUser().setReading3(false);
+            MyApplication.getUser().setSingleChoice1("unlock");
+            MyApplication.getUser().setSingleChoice2("lock");
+            MyApplication.getUser().setSingleChoice3("lock");
+            MyApplication.getUser().setReading1("unlock");
+            MyApplication.getUser().setReading2("lock");
+            MyApplication.getUser().setReading3("lock");
             MyApplication.getUser().setName(usernameEditText.getText().toString().trim());
             MyApplication.getUser().setUsername(account);
             MyApplication.getUser().setPassword(password);

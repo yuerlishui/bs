@@ -137,6 +137,7 @@ public class SingleCollectFragment extends DialogFragment {
     private void loadData() {
         try {
             list = dbManager.selector(Question.class).findAll();
+            Log.d("TAG", "loadData: "+list.toString());
             adapter = new SingleCollectAdapter(getContext(), list);
             if (list != null) {
                 listView.setAdapter(adapter);

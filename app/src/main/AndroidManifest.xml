@@ -37,7 +37,8 @@
         <activity android:name=".activity.WelcomeActivity" />
         <activity android:name=".activity.BaseActivity" />
         <activity android:name=".activity.SingleChooseActivity" />
-        <activity android:name=".activity.CollectActivity"></activity>
+        <activity android:name=".activity.CollectActivity" />
+        <activity android:name=".activity.ReadingActivity"></activity>
     </application>
 
 </manifest>
