@@ -58,6 +58,18 @@ public class TestFragment extends DialogFragment {
     @ViewInject(R.id.advancedState)
     private TextView advancedState;
 
+    @ViewInject(R.id.readingMiddle)
+    private TextView readingMiddle;
+
+    @ViewInject(R.id.readingMiddleStatue)
+    private TextView readingMiddleStatue;
+
+    @ViewInject(R.id.readingAdvanced)
+    private TextView readingAdvanced;
+
+    @ViewInject(R.id.readingAdvancedStatue)
+    private TextView readingAdvancedStatue;
+
     private List<String> list;
 
     public TestFragment() {
@@ -109,6 +121,26 @@ public class TestFragment extends DialogFragment {
                     // advanced.setBackgroundColor(Color.parseColor("#aaa"));
                     advanced.setBackground(getActivity().getResources().getDrawable(R.drawable.bg_text));
                     advancedState.setText("未解锁");
+                }
+
+
+                if (user.getReading2().equals("unlock")) {
+                    //  middle.setBackgroundColor(Color.parseColor("#a8d832"));
+                    readingMiddle.setBackground(getActivity().getResources().getDrawable(R.drawable.bg_unlock));
+                    readingMiddleStatue.setText("已解锁");
+                } else {
+                    // middle.setBackgroundColor(Color.parseColor("#aaa"));
+                    readingMiddle.setBackground(getActivity().getResources().getDrawable(R.drawable.bg_text));
+                    readingMiddleStatue.setText("未解锁");
+                }
+                if (user.getReading3().equals("unlock")) {
+                    //  advanced.setBackgroundColor(Color.parseColor("#a8d832"));
+                    readingAdvanced.setBackground(getActivity().getResources().getDrawable(R.drawable.bg_unlock));
+                    readingAdvancedStatue.setText("已解锁");
+                } else {
+                    // advanced.setBackgroundColor(Color.parseColor("#aaa"));
+                    readingAdvanced.setBackground(getActivity().getResources().getDrawable(R.drawable.bg_text));
+                    readingAdvancedStatue.setText("未解锁");
                 }
             }
 
@@ -233,6 +265,77 @@ public class TestFragment extends DialogFragment {
     private void reading1Click(View view) {
         Intent intent = new Intent(getActivity(), ReadingActivity.class);
         startActivity(intent);
+    }
+
+
+    @Event(value = R.id.readingMiddle)
+    private void readingMiddleClick(View view) {
+        BmobQuery<User> query = new BmobQuery<>();
+        query.getObject(getContext(), BmobUser.getCurrentUser(getContext()).getObjectId(), new GetListener<User>() {
+            @Override
+            public void onSuccess(User user) {
+                if (user.getReading2().equals("unlock")) {
+                    Intent intent = new Intent(getActivity(), ReadingActivity.class);
+                    intent.putExtra("level", "middle");
+                    startActivity(intent);
+                } else {
+                    final BeautifulOneBtnDialog beautifulDialog = new BeautifulOneBtnDialog(getContext());
+                    beautifulDialog.setTitleTxt("还没有解锁哦");
+                    beautifulDialog.setMsgTxt("只有通过下一关才能解锁");
+                    beautifulDialog.setOneBtn(true);
+                    beautifulDialog.setConfirTxt("确认");
+                    beautifulDialog.setMsgVisible(View.VISIBLE);
+                    beautifulDialog.setClick(new BeautifulOneBtnDialog.ButtonClick() {
+                        @Override
+                        public void onPositive() {
+                            beautifulDialog.dismiss();
+                        }
+                    });
+                    beautifulDialog.show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(int i, String s) {
+                Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @Event(value = R.id.readingAdvanced)
+    private void setReadingAdvancedClick(View view) {
+        BmobQuery<User> query = new BmobQuery<>();
+        query.getObject(getContext(), BmobUser.getCurrentUser(getContext()).getObjectId(), new GetListener<User>() {
+            @Override
+            public void onSuccess(User user) {
+                if (user.getReading3().equals("unlock")) {
+                    Intent intent = new Intent(getActivity(), ReadingActivity.class);
+                    intent.putExtra("level", "middle");
+                    startActivity(intent);
+                } else {
+                    final BeautifulOneBtnDialog beautifulDialog = new BeautifulOneBtnDialog(getContext());
+                    beautifulDialog.setTitleTxt("还没有解锁哦");
+                    beautifulDialog.setMsgTxt("只有通过下一关才能解锁");
+                    beautifulDialog.setOneBtn(true);
+                    beautifulDialog.setConfirTxt("确认");
+                    beautifulDialog.setMsgVisible(View.VISIBLE);
+                    beautifulDialog.setClick(new BeautifulOneBtnDialog.ButtonClick() {
+                        @Override
+                        public void onPositive() {
+                            beautifulDialog.dismiss();
+                        }
+                    });
+                    beautifulDialog.show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(int i, String s) {
+                Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

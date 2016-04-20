@@ -250,7 +250,7 @@
                     android:alpha=".8">
 
                     <TextView
-                        android:id="@+id/month5"
+                        android:id="@+id/readingMiddle"
                         android:layout_width="72dp"
                         android:layout_height="72dp"
                         android:layout_centerHorizontal="true"
@@ -264,15 +264,16 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/month5"
+                        android:layout_below="@+id/readingMiddle"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="5dp"
                         android:text="阅读理解" />
 
                     <TextView
+                        android:id="@+id/readingMiddleStatue"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignBottom="@+id/month5"
+                        android:layout_alignBottom="@+id/readingMiddle"
                         android:layout_centerHorizontal="true"
                         android:layout_marginBottom="8dp"
                         android:text="未解锁"
@@ -289,7 +290,7 @@
                     android:alpha=".8">
 
                     <TextView
-                        android:id="@+id/month6"
+                        android:id="@+id/readingAdvanced"
                         android:layout_width="72dp"
                         android:layout_height="72dp"
                         android:layout_centerHorizontal="true"
@@ -303,15 +304,16 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/month6"
+                        android:layout_below="@+id/readingAdvanced"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="5dp"
                         android:text="阅读理解" />
 
                     <TextView
+                        android:id="@+id/readingAdvancedStatue"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignBottom="@+id/month6"
+                        android:layout_alignBottom="@+id/readingAdvanced"
                         android:layout_centerHorizontal="true"
                         android:layout_marginBottom="8dp"
                         android:text="未解锁"

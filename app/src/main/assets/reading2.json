@@ -1,0 +1,62 @@
+[
+  {
+    "question": "56. What does the latest congressional report suggest?",
+    "answerA": "A.STEM-related subjects help students find jobs in the information society.",
+    "answerB": "B.The humanities and STEM subjects should be given equal importance.",
+    "answerC": "C.The liberal arts in higher education help enrich students’ spiritual life.",
+    "answerD": "D.Higher education should be adjusted to the practical needs of society.",
+    "answer": "1",
+    "explaination": "正确答案为B",
+    "ID": "0",
+    "selectedAnswer": "-1",
+    "content": "        The question of whether our government should promote science and technology or the liberal arts in higher education isn’t an either/or proposition(命题)，although the current emphasis on preparing young Americans for STEM(science, technology, engineering, maths)-related fields can make it seem that way.\n        The latest congressional report acknowledges the critical importance of technical training, but also asserts that the study of the humanities (人文学科)and social sciences must remain central components of America’s educational system at all levels. Both are critical to producing citizens who can participate effectively in our democratic society, become innovative(创新的)leaders, and benefit from the spiritual enrichment that the reflection on the great ideas of mankind over time provides.\n        Parents and students who have invested heavily in higher education worry about graduates’ job prospects as technological advances and changes in domestic and global markets transform professions in ways that reduce wages and cut jobs. Under these circumstances, it’s natural to look for what may appear to be the most “practical” way out of the problem “Major in a subject designed to get you a job” seems the obvious answer to some, though this ignores the fact that many disciplines in the humanities characterized as “soft” often, in fact, lead to employment and success in the long run. Indeed, according to surveys, employers have expressed a preference for students who have received a broadly-based education that has taught them to write well, think critically, research creatively, and communicate easily.\n        Moreover, students should be prepared not just for their first job, but for their 4th and 5th jobs, as there’s little reason to doubt that people entering the workforce today will be called upon to play many different roles over the course of their careers. The ones who will do the best in this new environment will be those whose educations have prepared them to be flexible. The ability to draw upon every available tool and insight—picked up from science, arts, and technology—to solve the problems of the future, and take advantage of the opportunities that present themselves, will be helpful to them and the United States."
+  },
+  {
+    "question": "57. What is the main concern of students when they choose a major?",
+    "answerA": "A.Their interest in relevant subjects.",
+    "answerB": "B.The academic value of the courses.",
+    "answerC": "C.The quality of education to receive.",
+    "answerD": "D.Their chances of getting a good job.",
+    "answer": "3",
+    "explaination": "正确答案为D",
+    "ID": "0",
+    "selectedAnswer": "-1",
+    "content": ""
+  },
+  {
+    "question": "58. What does the author say about the so called soft subjects?",
+    "answerA": "A.The benefit students in their future life.",
+    "answerB": "B.They broaden students’ range of interests.",
+    "answerC": "C.They improve students’ communication skills.",
+    "answerD": "D.They are essential to students’ healthy growth.",
+    "answer": "0",
+    "explaination": "正确答案为A",
+    "ID": "0",
+    "selectedAnswer": "-1",
+    "content": ""
+  },
+  {
+    "question": "59. What kind of job applicants do employers look for?",
+    "answerA": "A.Those who have a strong sense of responsibility.",
+    "answerB": "B.Those who are good at solving practical problems.",
+    "answerC": "C.Those who are likely to become innovative leaders.",
+    "answerD": "D.Those who have received a well-rounded education.",
+    "answer": "3",
+    "explaination": "正确答案为D",
+    "ID": "0",
+    "selectedAnswer": "-1",
+    "content": ""
+  },
+  {
+    "question": "60. What advice does the author give to college students?",
+    "answerA": "A.Seize opportunities to tap their potential.",
+    "answerB": "B.Try to take a variety of practical courses.",
+    "answerC": "C.Prepare themselves for different job options.",
+    "answerD": "D.Adopt a flexible approach to solving problems.",
+    "answer": "2",
+    "explaination": "正确答案为C",
+    "ID": "0",
+    "selectedAnswer": "-1",
+    "content": ""
+  }
+]
