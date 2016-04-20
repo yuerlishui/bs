@@ -5,7 +5,7 @@
     tools:context="com.yukunlin.ykl.fragment.SingleCollectFragment">
 
     <com.yukunlin.ykl.swipemenulistview.SwipeMenuListView
-        android:id="@id/listView"
+        android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="#e1e1e1"

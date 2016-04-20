@@ -3,11 +3,13 @@ package com.yukunlin.ykl.model;
 import org.xutils.db.annotation.Column;
 import org.xutils.db.annotation.Table;
 
+import cn.bmob.v3.BmobObject;
+
 /**
  * Created by ��Ⱥ on 2015/5/27.
  */
 @Table(name = "question")
-public class Question {
+public class Question extends BmobObject{
     @Column(name = "question")
     public String question;
 
@@ -34,6 +36,17 @@ public class Question {
 
     @Column(name = "selectedAnswer")
     public int selectedAnswer;
+
+    @Column(name = "content")
+    public String content;
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
 
     public String getQuestion() {
         return question;
@@ -119,6 +132,7 @@ public class Question {
                 ", explaination='" + explaination + '\'' +
                 ", id=" + id +
                 ", selectedAnswer=" + selectedAnswer +
+                ", content='" + content + '\'' +
                 '}';
     }
 }

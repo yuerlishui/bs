@@ -6,6 +6,7 @@
     tools:context="com.yukunlin.ykl.activity.StartUpActivity">
 
     <ImageView
+        android:scaleType="centerCrop"
         android:id="@+id/startImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

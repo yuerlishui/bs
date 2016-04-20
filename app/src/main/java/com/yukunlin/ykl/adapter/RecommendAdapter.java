@@ -21,6 +21,10 @@ public class RecommendAdapter extends BaseAdapter {
     private List<Comment> list;
     private Context context;
 
+    public void setList(List<Comment> list) {
+        this.list = list;
+    }
+
     public RecommendAdapter(List<Comment> list, Context context) {
         this.list = list;
         this.context = context;

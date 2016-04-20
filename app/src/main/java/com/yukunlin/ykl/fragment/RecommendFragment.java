@@ -28,6 +28,7 @@ import com.yukunlin.ykl.R;
 import com.yukunlin.ykl.adapter.RecommendAdapter;
 import com.yukunlin.ykl.model.Comment;
 import com.yukunlin.ykl.model.OneWord;
+import com.yukunlin.ykl.model.Question;
 import com.yukunlin.ykl.utils.MemoryCache;
 
 import org.json.JSONException;
@@ -43,6 +44,7 @@ import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.SaveListener;
 import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
@@ -81,6 +83,7 @@ public class RecommendFragment extends DialogFragment {
     private int index = 0;
     private String sid;
     private String ttsUrl;
+    private RecommendAdapter adapter;
 
 
     public RecommendFragment() {
@@ -204,8 +207,10 @@ public class RecommendFragment extends DialogFragment {
             @Override
             public void onSuccess(List<Comment> list) {
                 Collections.reverse(list);
-                RecommendAdapter adapter = new RecommendAdapter(list, getContext());
-                listView.setAdapter(adapter);
+//                RecommendAdapter adapter = new RecommendAdapter(list, getContext());
+//                listView.setAdapter(adapter);
+                adapter.setList(list);
+                adapter.notifyDataSetChanged();
                 commentTextView.setText(list.size() + "");
                 ptrLayout.refreshComplete();
             }
@@ -260,7 +265,8 @@ public class RecommendFragment extends DialogFragment {
                     content.setText(contents);
                     translation.setText(translations.substring(5));
                     picture.setImageUrl(picture2, loader);
-
+                    adapter = new RecommendAdapter(new ArrayList<Comment>(),getContext());
+                    listView.setAdapter(adapter);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -273,6 +279,19 @@ public class RecommendFragment extends DialogFragment {
             }
         });
         mQueue.add(request);
+
+//        Question question = new Question();
+//        question.save(getContext(), new SaveListener() {
+//            @Override
+//            public void onSuccess() {
+//                Toast.makeText(getContext(),"success",Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onFailure(int i, String s) {
+//                Toast.makeText(getContext(),s,Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
 
