@@ -37,6 +37,14 @@ public class ShowSingleFragment extends DialogFragment {
     private TextView tv_explaination;
 
     private RadioButton[] radioButtons = new RadioButton[4];
+    @ViewInject(R.id.content)
+    private TextView contentTextView;
+    private String content;
+    private boolean isReadType;
+
+    public void setReadType(boolean readType) {
+        isReadType = readType;
+    }
 
     public ShowSingleFragment() {
         // Required empty public constructor
@@ -63,6 +71,9 @@ public class ShowSingleFragment extends DialogFragment {
     }
 
     private void initView() {
+        if (isReadType) {
+            contentTextView.setText(content);
+        }
 
         tv_question.setText(data.getQuestion());
         tv_explaination.setText(data.getExplaination());
@@ -81,5 +92,9 @@ public class ShowSingleFragment extends DialogFragment {
 
     public void setData(Question data) {
         this.data = data;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }

@@ -21,7 +21,9 @@ import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.listener.GetListener;
 import cn.bmob.v3.listener.UpdateListener;
 
 /**
@@ -70,26 +72,39 @@ public class ProfileFragment extends DialogFragment {
     }
 
     private void initData() {
-        User currentUser = BmobUser.getCurrentUser(getContext(), User.class);
-        if (currentUser.getSex().equals("man")) {
-            boyImageView.setSelected(true);
-            girlImageView.setSelected(false);
-            headImageView.setImageResource(R.drawable.default_avatar_male);
+        //   User currentUser = BmobUser.getCurrentUser(getContext(), User.class);
 
-        } else {
-            boyImageView.setSelected(false);
-            girlImageView.setSelected(true);
-            headImageView.setImageResource(R.drawable.default_avatar_female);
-        }
+        BmobQuery<User> bmobQuery = new BmobQuery<>();
+        bmobQuery.getObject(getContext(), BmobUser.getCurrentUser(getContext()).getObjectId(), new GetListener<User>() {
+            @Override
+            public void onSuccess(User user) {
+                if (user.getSex().equals("man")) {
+                    boyImageView.setSelected(true);
+                    girlImageView.setSelected(false);
+                    headImageView.setImageResource(R.drawable.default_avatar_male);
 
-        nameTextView.setText(currentUser.getName());
-        phoneEditView.setText(currentUser.getMobilePhoneNumber());
+                } else {
+                    boyImageView.setSelected(false);
+                    girlImageView.setSelected(true);
+                    headImageView.setImageResource(R.drawable.default_avatar_female);
+                }
+
+                nameTextView.setText(user.getName());
+                phoneEditView.setText(user.getMobilePhoneNumber());
+            }
+
+            @Override
+            public void onFailure(int i, String s) {
+                Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     @Event(value = R.id.submitView)
     private void saveClick(View view) {
         final ProgressDialog progressDialog = new ProgressDialog(getContext());
-        progressDialog.setTitle("正在保存。。。");
+        progressDialog.setTitle("正在保存...");
         progressDialog.show();
         User newUser = new User();
         newUser.setMobilePhoneNumber(phoneEditView.getText().toString().trim());
@@ -125,6 +140,18 @@ public class ProfileFragment extends DialogFragment {
     @Event(value = R.id.backImageButton)
     private void backClick(View view) {
         dismiss();
+    }
+
+    @Event(value = R.id.boyImageView)
+    private void boyClick(View view) {
+       boyImageView.setSelected(true);
+        girlImageView.setSelected(false);
+    }
+
+    @Event(value = R.id.girlImageView)
+    private void girlClick(View view){
+        boyImageView.setSelected(false);
+        girlImageView.setSelected(true);
     }
 
     public interface OnFinishListener {

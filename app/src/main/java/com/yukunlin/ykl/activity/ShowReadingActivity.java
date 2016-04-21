@@ -1,20 +1,21 @@
 package com.yukunlin.ykl.activity;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.yukunlin.ykl.MyApplication;
 import com.yukunlin.ykl.R;
 import com.yukunlin.ykl.model.Question;
+import com.yukunlin.ykl.model.Reading;
 import com.yukunlin.ykl.user.User;
 
 import org.xutils.DbManager;
@@ -29,17 +30,18 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.listener.SaveListener;
+import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.UpdateListener;
 
-public class SingleChooseActivity extends BaseActivity {
+public class ShowReadingActivity extends BaseActivity {
+
     private int count;
     private int current;
     private boolean wrongMode;
     private RadioButton[] radioButtons = new RadioButton[4];
-    private List<Question> list = new ArrayList<>();
-    private String msg;
+    private List<Reading> list = new ArrayList<>();
 
 
     @ViewInject(R.id.radioGroup)
@@ -50,34 +52,31 @@ public class SingleChooseActivity extends BaseActivity {
 
     @ViewInject(R.id.explaination)
     private TextView tv_explaination;
-    private DbManager dbManager;
 
+    @ViewInject(R.id.content)
+    private TextView content;
+
+    private DbManager dbManager;
+    private String msg = "恭喜你全部回答正确！";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_single_choose);
+        setContentView(R.layout.activity_reading);
         x.view().inject(this);
         initData();
-        initView();
-        initRadioGroup();
-        initDB();
-        initIntent();
-    }
 
-    private void initIntent() {
-        if (getIntent().getStringExtra("level").equals("primary")) {
-           msg = "恭喜你全部回答正确！\n 第二关已经解锁";
-        } else if (getIntent().getStringExtra("level").equals("middle")) {
-            msg = "恭喜你全部回答正确！\n 第三关已经解锁";
-        }else {
-            msg = "恭喜你全部回答正确！";
-        }
+        initDB();
+        initRadioGroup();
+
+       // initIntent();
+
+
     }
 
     private void initDB() {
         DbManager.DaoConfig config = new DbManager.DaoConfig()
-                .setDbName(BmobUser.getCurrentUser(this).getObjectId() + "singlecollect")
+                .setDbName(BmobUser.getCurrentUser(this).getObjectId() + "reading")
                 .setDbVersion(1)
                 .setDbUpgradeListener(new DbManager.DbUpgradeListener() {
                     @Override
@@ -86,6 +85,16 @@ public class SingleChooseActivity extends BaseActivity {
                     }
                 });
         dbManager = x.getDb(config);
+    }
+
+    private void initIntent() {
+        if (getIntent().getStringExtra("level").equals("primary")) {
+            msg = "恭喜你全部回答正确！\n 第二关已经解锁";
+        } else if (getIntent().getStringExtra("level").equals("middle")) {
+            msg = "恭喜你全部回答正确！\n 第三关已经解锁";
+        } else {
+            msg = "恭喜你全部回答正确！";
+        }
     }
 
     private void initRadioGroup() {
@@ -103,42 +112,53 @@ public class SingleChooseActivity extends BaseActivity {
     }
 
     private void initData() {
-        InputStream inputStream = null;
-        try {
-            inputStream = getAssets().open("question.json");
-            byte[] bytes = new byte[inputStream.available()];
-            inputStream.read(bytes);
-            String unitJson = new String(bytes, Charset.forName("utf-8"));
-            Gson gson = new Gson();
-            list = gson.fromJson(unitJson, new TypeToken<ArrayList<Question>>() {
-            }.getType());
-        } catch (IOException e) {
-            list = new ArrayList<Question>();
-            e.printStackTrace();
-        }
-        count = list.size();
-        current = 0;
-        wrongMode = false;
-//        Question question = list.get(4);
-//        question.save(SingleChooseActivity.this, new SaveListener() {
-//            @Override
-//            public void onSuccess() {
-//                Toast.makeText(SingleChooseActivity.this,"success",Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onFailure(int i, String s) {
-//
-//            }
-//        });
+//        InputStream inputStream = null;
+//        try {
+//            inputStream = getAssets().open("reading.json");
+//            byte[] bytes = new byte[inputStream.available()];
+//            inputStream.read(bytes);
+//            String unitJson = new String(bytes, Charset.forName("utf-8"));
+//            Gson gson = new Gson();
+//            list = gson.fromJson(unitJson, new TypeToken<ArrayList<Question>>() {
+//            }.getType());
+//        } catch (IOException e) {
+//            list = new ArrayList<Question>();
+//            e.printStackTrace();
+//        }
+//        count = list.size();
+//        current = 0;
+//        wrongMode = false;
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("请稍后...");
+        progressDialog.show();
+        BmobQuery<Reading> bmobQuery = new BmobQuery<>();
+        bmobQuery.findObjects(this, new FindListener<Reading>() {
+            @Override
+            public void onSuccess(List<Reading> listQ) {
+                list = listQ;
+
+                count = list.size();
+                current = 0;
+                wrongMode = false;
+                initView();
+                progressDialog.dismiss();
+            }
+
+            @Override
+            public void onError(int i, String s) {
+
+            }
+        });
+
     }
 
     @Event(value = R.id.btn_next)
     private void nextClick(View view) {
         if (current < count - 1) {
             current++;
-            Question q = list.get(current);
-            tv_question.setText((current+1)+"."+q.question);
+            Reading q = list.get(current);
+            content.setText(q.content);
+            tv_question.setText(q.question);
             radioButtons[0].setText(q.answerA);
             radioButtons[1].setText(q.answerB);
             radioButtons[2].setText(q.answerC);
@@ -150,13 +170,13 @@ public class SingleChooseActivity extends BaseActivity {
                 radioButtons[q.selectedAnswer].setChecked(true);
             }
         } else if (current == count - 1 && wrongMode == true) {
-            new AlertDialog.Builder(SingleChooseActivity.this)
+            new AlertDialog.Builder(ShowReadingActivity.this)
                     .setTitle("提示")
                     .setMessage("已经到达最后一题，是否退出？")
                     .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            SingleChooseActivity.this.finish();
+                            ShowReadingActivity.this.finish();
                         }
                     })
                     .setNegativeButton("取消", null)
@@ -164,7 +184,7 @@ public class SingleChooseActivity extends BaseActivity {
         } else {
             final List<Integer> wrongList = checkAnswer(list);
             if (wrongList.size() == 0) {
-                new AlertDialog.Builder(SingleChooseActivity.this)
+                new AlertDialog.Builder(ShowReadingActivity.this)
                         .setTitle("提示")
                         .setMessage(msg)
                         .setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -172,12 +192,12 @@ public class SingleChooseActivity extends BaseActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 User newUser = new User();
                                 if (getIntent().getStringExtra("level").equals("primary")) {
-                                    newUser.setSingleChoice2("unlock");
+                                    newUser.setReading2("unlock");
                                 } else if (getIntent().getStringExtra("level").equals("middle")) {
-                                    newUser.setSingleChoice3("unlock");
+                                    newUser.setReading3("unlock");
                                 }
-                                BmobUser bmobUser = BmobUser.getCurrentUser(SingleChooseActivity.this);
-                                newUser.update(SingleChooseActivity.this, bmobUser.getObjectId(), new UpdateListener() {
+                                BmobUser bmobUser = BmobUser.getCurrentUser(ShowReadingActivity.this);
+                                newUser.update(ShowReadingActivity.this, bmobUser.getObjectId(), new UpdateListener() {
                                     @Override
                                     public void onSuccess() {
 
@@ -188,13 +208,12 @@ public class SingleChooseActivity extends BaseActivity {
                                         Log.d("TAG", "onFailure: " + msg);
                                     }
                                 });
-
-                                SingleChooseActivity.this.finish();
+                                ShowReadingActivity.this.finish();
                             }
                         })
                         .show();
             } else {
-                new AlertDialog.Builder(SingleChooseActivity.this)
+                new AlertDialog.Builder(ShowReadingActivity.this)
                         .setTitle("提示")
                         .setMessage("您答对了" + (list.size() - wrongList.size()) +
                                 "道题目，答错了" + wrongList.size() + "道题目。是否查看错题？")
@@ -202,7 +221,7 @@ public class SingleChooseActivity extends BaseActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 wrongMode = true;
-                                List<Question> newList = new ArrayList<Question>();
+                                List<Reading> newList = new ArrayList<Reading>();
                                 for (int i = 0; i < wrongList.size(); i++) {
                                     newList.add(list.get(wrongList.get(i)));
                                 }
@@ -211,7 +230,6 @@ public class SingleChooseActivity extends BaseActivity {
                                 } catch (DbException e) {
                                     e.printStackTrace();
                                 }
-
                                 list.clear();
                                 for (int i = 0; i < newList.size(); i++) {
                                     list.add(newList.get(i));
@@ -220,8 +238,9 @@ public class SingleChooseActivity extends BaseActivity {
                                 current = 0;
                                 count = list.size();
 
-                                Question q = list.get(current);
-                                tv_question.setText((current+1)+"."+q.question);
+                                Reading q = list.get(current);
+                                content.setText(q.content);
+                                tv_question.setText(q.question);
                                 radioButtons[0].setText(q.answerA);
                                 radioButtons[1].setText(q.answerB);
                                 radioButtons[2].setText(q.answerC);
@@ -233,13 +252,13 @@ public class SingleChooseActivity extends BaseActivity {
                         .setNegativeButton("取消", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                SingleChooseActivity.this.finish();
+                                ShowReadingActivity.this.finish();
                             }
                         })
                         .show();
             }
-
         }
+
         initRadioGroup();
     }
 
@@ -247,8 +266,9 @@ public class SingleChooseActivity extends BaseActivity {
     private void preClick(View view) {
         if (current > 0) {
             current--;
-            Question q = list.get(current);
-            tv_question.setText((current+1)+"."+q.question);
+            Reading q = list.get(current);
+            content.setText(q.content);
+            tv_question.setText(q.question);
             radioButtons[0].setText(q.answerA);
             radioButtons[1].setText(q.answerB);
             radioButtons[2].setText(q.answerC);
@@ -271,8 +291,9 @@ public class SingleChooseActivity extends BaseActivity {
         radioButtons[2] = (RadioButton) findViewById(R.id.answerC);
         radioButtons[3] = (RadioButton) findViewById(R.id.answerD);
 
-        Question q = list.get(0);
-        tv_question.setText("1."+q.question);
+        Reading q = list.get(0);
+        tv_question.setText(q.question);
+        content.setText(q.content);
         tv_explaination.setText(q.explaination);
         radioButtons[0].setText(q.answerA);
         radioButtons[1].setText(q.answerB);
@@ -280,7 +301,7 @@ public class SingleChooseActivity extends BaseActivity {
         radioButtons[3].setText(q.answerD);
     }
 
-    private List<Integer> checkAnswer(List<Question> list) {
+    private List<Integer> checkAnswer(List<Reading> list) {
         List<Integer> wrongList = new ArrayList<Integer>();
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).answer != list.get(i).selectedAnswer) {

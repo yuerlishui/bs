@@ -2,6 +2,7 @@ package com.yukunlin.ykl.fragment;
 
 
 import android.annotation.TargetApi;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -22,6 +23,8 @@ import com.yukunlin.ykl.CumstomView.BeautifulOneBtnDialog;
 import com.yukunlin.ykl.MyApplication;
 import com.yukunlin.ykl.R;
 import com.yukunlin.ykl.activity.ReadingActivity;
+import com.yukunlin.ykl.activity.ShowReadingActivity;
+import com.yukunlin.ykl.activity.ShowTestActivity;
 import com.yukunlin.ykl.activity.SingleChooseActivity;
 import com.yukunlin.ykl.adapter.TestAdapter;
 import com.yukunlin.ykl.model.Question;
@@ -71,6 +74,7 @@ public class TestFragment extends DialogFragment {
     private TextView readingAdvancedStatue;
 
     private List<String> list;
+    private ProgressDialog progressDialog;
 
     public TestFragment() {
         // Required empty public constructor
@@ -91,6 +95,8 @@ public class TestFragment extends DialogFragment {
     }
 
     private void initView() {
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("请稍后...");
         list = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             list.add(i + 1 + "");
@@ -156,24 +162,46 @@ public class TestFragment extends DialogFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
-                        BmobQuery<Question> query = new BmobQuery<Question>();
-                        query.getObject(getContext(), "d31c6a8d9d", new GetListener<Question>() {
-                            @Override
-                            public void onSuccess(Question question) {
-
-                            }
-
-                            @Override
-                            public void onFailure(int i, String s) {
-
-                            }
-                        });
+                        Intent i1 = new Intent(getActivity(), ShowTestActivity.class);
+                        i1.putExtra("position", position);
+                        startActivity(i1);
                         break;
                     case 1:
-
+                        Intent i2 = new Intent(getActivity(), ShowTestActivity.class);
+                        i2.putExtra("position", position);
+                        startActivity(i2);
                         break;
                     case 2:
-
+                        Intent i3 = new Intent(getActivity(), ShowReadingActivity.class);
+                        i3.putExtra("position", position);
+                        startActivity(i3);
+                        break;
+                    case 3:
+                        Intent i4 = new Intent(getActivity(), ShowTestActivity.class);
+                        i4.putExtra("position", position);
+                        startActivity(i4);
+                        break;
+                    case 4:
+                        Intent i5 = new Intent(getActivity(), ShowTestActivity.class);
+                        i5.putExtra("position", position);
+                        startActivity(i5);
+                        break;
+                    case 5:
+                        Intent i6 = new Intent(getActivity(), ShowReadingActivity.class);
+                        i6.putExtra("position", position);
+                        startActivity(i6);
+                        break;
+                    case 6:
+                        Toast.makeText(getContext(),"敬请期待",Toast.LENGTH_SHORT).show();
+                        break;
+                    case 7:
+                        Toast.makeText(getContext(),"敬请期待",Toast.LENGTH_SHORT).show();
+                        break;
+                    case 8:
+                        Toast.makeText(getContext(),"敬请期待",Toast.LENGTH_SHORT).show();
+                        break;
+                    case 9:
+                        Toast.makeText(getContext(),"敬请期待",Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
@@ -189,10 +217,12 @@ public class TestFragment extends DialogFragment {
 
     @Event(value = R.id.middle)
     private void middleClick(View view) {
+        progressDialog.show();
         BmobQuery<User> query = new BmobQuery<>();
         query.getObject(getContext(), BmobUser.getCurrentUser(getContext()).getObjectId(), new GetListener<User>() {
             @Override
             public void onSuccess(User user) {
+                progressDialog.dismiss();
                 if (user.getSingleChoice2().equals("unlock")) {
                     Intent intent = new Intent(getActivity(), SingleChooseActivity.class);
                     intent.putExtra("level", "middle");
@@ -218,6 +248,7 @@ public class TestFragment extends DialogFragment {
             @Override
             public void onFailure(int i, String s) {
                 Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
             }
         });
 
@@ -226,10 +257,12 @@ public class TestFragment extends DialogFragment {
 
     @Event(value = R.id.advanced)
     private void advancedClick(View view) {
+        progressDialog.show();
         BmobQuery<User> query = new BmobQuery<>();
         query.getObject(getContext(), BmobUser.getCurrentUser(getContext()).getObjectId(), new GetListener<User>() {
             @Override
             public void onSuccess(User user) {
+                progressDialog.dismiss();
                 if (user.getSingleChoice3().equals("unlock")) {
                     Intent intent = new Intent(getActivity(), SingleChooseActivity.class);
                     intent.putExtra("level", "advanced");
@@ -255,6 +288,7 @@ public class TestFragment extends DialogFragment {
             @Override
             public void onFailure(int i, String s) {
                 Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
             }
         });
 
@@ -264,16 +298,19 @@ public class TestFragment extends DialogFragment {
     @Event(value = R.id.readingPrimary)
     private void reading1Click(View view) {
         Intent intent = new Intent(getActivity(), ReadingActivity.class);
+        intent.putExtra("level", "primary");
         startActivity(intent);
     }
 
 
     @Event(value = R.id.readingMiddle)
     private void readingMiddleClick(View view) {
+        progressDialog.show();
         BmobQuery<User> query = new BmobQuery<>();
         query.getObject(getContext(), BmobUser.getCurrentUser(getContext()).getObjectId(), new GetListener<User>() {
             @Override
             public void onSuccess(User user) {
+                progressDialog.dismiss();
                 if (user.getReading2().equals("unlock")) {
                     Intent intent = new Intent(getActivity(), ReadingActivity.class);
                     intent.putExtra("level", "middle");
@@ -299,19 +336,22 @@ public class TestFragment extends DialogFragment {
             @Override
             public void onFailure(int i, String s) {
                 Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
             }
         });
     }
 
     @Event(value = R.id.readingAdvanced)
     private void setReadingAdvancedClick(View view) {
+        progressDialog.show();
         BmobQuery<User> query = new BmobQuery<>();
         query.getObject(getContext(), BmobUser.getCurrentUser(getContext()).getObjectId(), new GetListener<User>() {
             @Override
             public void onSuccess(User user) {
+                progressDialog.dismiss();
                 if (user.getReading3().equals("unlock")) {
                     Intent intent = new Intent(getActivity(), ReadingActivity.class);
-                    intent.putExtra("level", "middle");
+                    intent.putExtra("level", "advanced");
                     startActivity(intent);
                 } else {
                     final BeautifulOneBtnDialog beautifulDialog = new BeautifulOneBtnDialog(getContext());
@@ -334,6 +374,7 @@ public class TestFragment extends DialogFragment {
             @Override
             public void onFailure(int i, String s) {
                 Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
             }
         });
     }

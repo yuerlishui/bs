@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.yukunlin.ykl.CumstomView.BeautifulDialog;
@@ -30,6 +31,7 @@ import java.util.List;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.GetListener;
 import in.srain.cube.views.ptr.util.PtrLocalDisplay;
 
 /**
@@ -65,15 +67,27 @@ public class MyselfFragment extends DialogFragment {
     }
 
     private void initUserData() {
-        User currentUser = BmobUser.getCurrentUser(getContext(), User.class);
-        nameTextView.setText(currentUser.getName());
-        if (currentUser.getSex().equals("man")) {
-            sexImageView.setImageResource(R.drawable.personal_boys);
-            avatar.setImageResource(R.drawable.default_avatar_male);
-        } else {
-            sexImageView.setImageResource(R.drawable.icon_modify_girls_active);
-            avatar.setImageResource(R.drawable.default_avatar_female);
-        }
+      //  User currentUser = BmobUser.getCurrentUser(getContext(), User.class);
+        BmobQuery<User> bmobQuery = new BmobQuery<>();
+        bmobQuery.getObject(getContext(), BmobUser.getCurrentUser(getContext()).getObjectId(), new GetListener<User>() {
+            @Override
+            public void onSuccess(User user) {
+                nameTextView.setText(user.getName());
+                if (user.getSex().equals("man")) {
+                    sexImageView.setImageResource(R.drawable.personal_boys);
+                    avatar.setImageResource(R.drawable.default_avatar_male);
+                } else {
+                    sexImageView.setImageResource(R.drawable.icon_modify_girls_active);
+                    avatar.setImageResource(R.drawable.default_avatar_female);
+                }
+            }
+
+            @Override
+            public void onFailure(int i, String s) {
+                Toast.makeText(getContext(),s,Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     @Event(value = R.id.exit)

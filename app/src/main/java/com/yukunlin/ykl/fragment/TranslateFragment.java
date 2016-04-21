@@ -62,6 +62,8 @@ public class TranslateFragment extends DialogFragment {
     private String origin;
     private String dest;
     private DbManager dbManager;
+    private List<TranHistory> histories;
+    private TranHistoryAdapter adapter;
 
 
     public TranslateFragment() {
@@ -96,14 +98,27 @@ public class TranslateFragment extends DialogFragment {
                 });
         dbManager = x.getDb(config);
         try {
-            List<TranHistory> histories = dbManager.selector(TranHistory.class).findAll();
+            histories = dbManager.selector(TranHistory.class).findAll();
             if (histories != null) {
-                listView.setAdapter(new TranHistoryAdapter(getContext(), histories));
+                adapter = new TranHistoryAdapter(getContext(),histories);
+                listView.setAdapter(adapter);
             }
 
         } catch (DbException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+//        try {
+//            List<TranHistory> all = dbManager.selector(TranHistory.class).findAll();
+//            histories.addAll(all);
+//            adapter.notifyDataSetChanged();
+//        } catch (DbException e) {
+//            e.printStackTrace();
+//        }
     }
 
     private void initSpinner() {

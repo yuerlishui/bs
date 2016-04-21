@@ -38,7 +38,9 @@
         <activity android:name=".activity.BaseActivity" />
         <activity android:name=".activity.SingleChooseActivity" />
         <activity android:name=".activity.CollectActivity" />
-        <activity android:name=".activity.ReadingActivity"></activity>
+        <activity android:name=".activity.ReadingActivity" />
+        <activity android:name=".activity.ShowTestActivity" />
+        <activity android:name=".activity.ShowReadingActivity"></activity>
     </application>
 
 </manifest>

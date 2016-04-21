@@ -16,10 +16,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.BounceInterpolator;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import com.yukunlin.ykl.R;
 import com.yukunlin.ykl.adapter.SingleCollectAdapter;
 import com.yukunlin.ykl.model.Question;
+import com.yukunlin.ykl.model.Reading;
 import com.yukunlin.ykl.swipemenulistview.SwipeMenu;
 import com.yukunlin.ykl.swipemenulistview.SwipeMenuCreator;
 import com.yukunlin.ykl.swipemenulistview.SwipeMenuItem;
@@ -34,6 +36,7 @@ import org.xutils.x;
 import java.util.List;
 
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.listener.SaveListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -109,6 +112,8 @@ public class ReadCollectFragment extends DialogFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ShowSingleFragment fragment = new ShowSingleFragment();
                 fragment.setData(list.get(position));
+                fragment.setContent(list.get(0).getContent());
+                fragment.setReadType(true);
                 fragment.show(getActivity().getSupportFragmentManager(), "dialogFragment");
             }
         });
@@ -134,6 +139,18 @@ public class ReadCollectFragment extends DialogFragment {
     private void loadData() {
         try {
             list = dbManager.selector(Question.class).findAll();
+            List<Reading> all = dbManager.selector(Reading.class).findAll();
+//            all.get(4).save(getContext(), new SaveListener() {
+//                @Override
+//                public void onSuccess() {
+//                    Toast.makeText(getContext(),"success",Toast.LENGTH_SHORT).show();
+//                }
+//
+//                @Override
+//                public void onFailure(int i, String s) {
+//
+//                }
+//            });
             adapter = new SingleCollectAdapter(getContext(), list);
             if (list != null) {
                 listView.setAdapter(adapter);

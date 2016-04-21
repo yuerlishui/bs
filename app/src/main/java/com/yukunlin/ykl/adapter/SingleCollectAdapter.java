@@ -52,8 +52,8 @@ public class SingleCollectAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         Question history = list.get(position);
-        holder.title.setText(history.getQuestion());
-       // holder.explain.setText(history.getNote());
+        holder.title.setText((position+1) + "." + history.getQuestion());
+        // holder.explain.setText(history.getNote());
         return convertView;
     }
 
